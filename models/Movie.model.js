@@ -14,7 +14,7 @@ const userSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "UserModel",
+    ref: "User",
   },
   decision: {
     type: String,
@@ -25,10 +25,10 @@ const userSchema = new Schema({
   },
   alternative: {
     type: Schema.Types.ObjectId,
-    ref: "Usermodel",
+    ref: "User",
   },
 });
 
-const MovieModel = model("MovieModel", userSchema);
+const Movie = model("Movie", userSchema);
 
-module.exports = MovieModel;
+module.exports = Movie;

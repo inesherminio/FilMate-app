@@ -23,14 +23,14 @@ const userSchema = new Schema({
       max: 15,
     },
   ],
-  connections: [
+  following: [
     {
       type: Schema.Types.ObjectId,
-      ref: "UserModel",
+      ref: "User",
     },
   ],
 });
-//! Is this the correct way to reference the user connections?
-const UserModel = model("UserModel", userSchema);
 
-module.exports = UserModel;
+const User = model("User", userSchema);
+
+module.exports = User;

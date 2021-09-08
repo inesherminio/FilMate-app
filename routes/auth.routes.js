@@ -60,4 +60,42 @@ router.post("/signup", fileUploader.single("imageUrl"), (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.post("/login", (req, res, next) => {
+  const { email, password } = req.body;
+
+  //* Check if user filled all required info
+  if (!email || !password) {
+    res.render("index", {
+      err: "Please fill in all of the information",
+    });
+    return;
+  }
+
+  //* Check if the user exists in the DB
+  User.findOne({ email })
+    .then((user) => {
+      if (user) {
+        //* Check if password matches
+        const passwordCheck = bcrypt.compareSync(password, user.password);
+        if (passwordCheck) {
+          //* Authenticate the user
+          req.session.loggedInUser = user;
+          req.app.locals.isLoggedIn = true;
+          res.redirect("/profile");
+        } else {
+          res.render("index", {
+            err: "Wrong password",
+          });
+        }
+      } else {
+        res.render("index", {
+          err: "The user does not yet exist",
+        });
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;

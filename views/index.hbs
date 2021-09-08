@@ -1,21 +1,24 @@
+{{!-- Homepage --}}
 <img src="/images/filmate-name.png" alt="FilMate extended logo" />
 <h1>The ultimate social network for cinephiles. </h1>
 <h2>FilMate suggests you movies and connects you with people with the same movie
   interests.</h2>
-<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign
-  Up</button>
-<!-- Modal -->
+<button type="button" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign
+  Up</button>  
+  <p>{{err}}</p>
+
+{{!-- Sign Up Modal --}}
 <div
   class="modal fade"
-  id="exampleModal"
+  id="signUpModal"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="signUpModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
         <button
           type="button"
           class="btn-close"
@@ -24,7 +27,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/signup" method="POST">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
           <label for="username">Username</label>
           <input type="text" name="username" />
           <br />
@@ -36,6 +39,9 @@
           <br />
           <label for="passwordCheck">Confirm password</label>
           <input type="password" name="passwordCheck" />
+          <br>
+          <label for="imageUrl">Profile Picture</label>
+          <input type="file" name="imageUrl">
       </div>
       <div class="modal-footer">
         <button
@@ -43,7 +49,47 @@
           class="btn btn-secondary"
           data-bs-dismiss="modal"
         >Close</button>
-          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" data-bs-dismiss="modal">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Log In Modal --}}
+<div
+  class="modal fade"
+  id="logInModal"
+  tabindex="-1"
+  aria-labelledby="logInModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logInModalLabel">Log In</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+          <label for="email">Email</label>
+          <input type="text" name="email" />
+          <br />
+          <label for="password">Password</label>
+          <input type="password" name="password" />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Close</button>
+          <button type="submit" class="btn btn-primary">Log In</button>
         </form>
       </div>
     </div>

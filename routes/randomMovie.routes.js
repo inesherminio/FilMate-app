@@ -7,8 +7,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, (req, res, next) => {
-  const { decision, alternative } = req.body;
-  Movie.create({ decision, alternative })
+  const { title, image, user, decision, rank, alternative } = req.body;
+  Movie.create({ title, image, user, decision, rank, alternative })
     .then((movie) => {
       console.log("You made a decision on this movie:", movie);
       res.redirect("movies/random-movies.hbs");

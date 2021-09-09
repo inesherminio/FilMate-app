@@ -8,19 +8,20 @@ const axios = require("axios");
 
 https: router.get("/random-movie", isLoggedIn, (req, res, next) => {
   let index = Math.floor(Math.random() * 20);
+  let page = Math.floor(Math.random() * 500);
   axios
     .get(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
     )
     .then((movieFromApi) => {
-      console.log("Here is your movie", movieFromApi.data);
-
+      console.log(movieFromApi.data.results[index]);
       res.render("movies/random-movie.hbs", {
         movie: movieFromApi.data.results[index],
       });
     });
 });
 
+//! review route bellow
 router.post("/", isLoggedIn, (req, res, next) => {
   const { title, image, user, decision } = req.body;
   Movie.create({ title, image, user, decision })

@@ -1,7 +1,62 @@
 <h1>Start choosing which movies you want to watch!</h1>
 
-<div>
-  <img src="{{movie.poster_path}}" alt="" />
-  <h3>{{movie.title}}</h3>
+<!-- Nav tabs -->
+<div class="card text-center w-50">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home"
+          type="button"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >Movie Cover</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#profile"
+          type="button"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >Details</button>
+      </li>
+    </ul>
 
+    <!-- Tab panes -->
+    <div class="tab-content card-body">
+      <div
+        class="tab-pane active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
+        <img
+          src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"
+          alt="{{movie.title}} poster picture"
+        />
+      </div>
+      <div
+        class="tab-pane"
+        id="profile"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+      >
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class="card-text">{{movie.overview}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Movie Decision">
+  <button type="button" class="btn btn-warning">Watch</button>
+  <button type="button" class="btn btn-secondary">Chill</button>
 </div>

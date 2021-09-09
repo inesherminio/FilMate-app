@@ -5,20 +5,20 @@
   interests.</h2>
 <form action="/signup" method="GET">
 <button type="submit">Sign Up</button>
-</form>
+</form> 
 
-{{!-- Log In Modal --}}
+{{!-- Sign Up Modal --}}
 <div
   class="modal fade"
-  id="logInModal"
+  id="signUpModal"
   tabindex="-1"
-  aria-labelledby="logInModalLabel"
+  aria-labelledby="signUpModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="logInModalLabel">Log In</h5>
+        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
         <button
           type="button"
           class="btn-close"
@@ -27,12 +27,23 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/login" method="POST">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+          <label for="username">Username</label>
+          <input type="text" name="username" />
+          <br />
           <label for="email">Email</label>
           <input type="text" name="email" />
           <br />
           <label for="password">Password</label>
           <input type="password" name="password" />
+          <br />
+          <label for="passwordCheck">Confirm password</label>
+          <input type="password" name="passwordCheck" />
+          <br>
+          <label for="imageUrl">Profile Picture</label>
+          <input type="file" name="imageUrl">
+          <br>
+          <p style="color: red;">{{err}}</p>
       </div>
       <div class="modal-footer">
         <button
@@ -40,7 +51,7 @@
           class="btn btn-secondary"
           data-bs-dismiss="modal"
         >Close</button>
-          <button type="submit" class="btn btn-primary">Log In</button>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
       </div>
     </div>

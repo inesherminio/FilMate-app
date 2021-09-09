@@ -14,18 +14,41 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <nav>
-      <a href="/"><img
-          src="/images/filmate-logo.png"
-          alt="FilMate logo"
-          width="100"
-        /></a>
-      <button
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#logInModal"
-      >Log In</button>
-    </nav>
+
+    {{#if isLoggedIn}}
+      <nav>
+        <a href="/"><img
+            src="/images/filmate-logo.png"
+            alt="FilMate logo"
+            width="100"
+          /></a>
+        <a href="/profile">Profile</a>
+        <a href="/movie-list">Movies</a>
+        <a href="/movie">Random Movie</a>
+        <img
+          src="{{loggedInUser.profilePic}}"
+          alt="User's profile picture"
+          width="50"
+        />
+        <h4>{{loggedInUser.username}}</h4>
+        <form action="/logout" method="POST">
+          <button type="submit">Log Out</button>
+        </form>
+      </nav>
+    {{else}}
+      <nav>
+        <a href="/"><img
+            src="/images/filmate-logo.png"
+            alt="FilMate logo"
+            width="100"
+          /></a>
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#logInModal"
+        >Log In</button>
+      </nav>
+    {{/if}}
 
     {{{body}}}
 

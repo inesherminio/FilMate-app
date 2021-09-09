@@ -35,6 +35,9 @@ app.use("/", authRoutes);
 const profileRoutes = require("./routes/profile.routes.js");
 app.use("/profile", profileRoutes);
 
+const randomMovieRoutes = require("./routes/randomMovie.routes.js");
+app.use("/movies", randomMovieRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

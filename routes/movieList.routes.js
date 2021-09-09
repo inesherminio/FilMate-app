@@ -5,4 +5,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
   res.render("movies/movie-list.hbs");
 });
 
+router.post("/", isLoggedIn, (req, res, next) => {});
+
 module.exports = router;

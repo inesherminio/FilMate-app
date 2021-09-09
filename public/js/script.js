@@ -6,9 +6,13 @@ document.addEventListener(
   false
 );
 
-const myModal = document.getElementById("exampleModal");
-const myInput = document.getElementById("myInput");
+var signUpModal = new bootstrap.Modal(
+  document.getElementById("signUpModal"),
+  {}
+);
 
-myModal.addEventListener("shown.mdb.modal", () => {
-  myInput.focus();
-});
+signUpModal.show();
+
+var myModal = new bootstrap.Modal(document.getElementById("myModal"), {});
+
+myModal.show();

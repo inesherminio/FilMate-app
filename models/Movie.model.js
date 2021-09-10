@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
-const userSchema = new Schema({
+const movieSchema = new Schema({
   title: {
     type: String,
     // unique: true -> Ideally, should be unique, but its up to you
@@ -27,8 +26,11 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  movieId: {
+    type: String,
+  },
 });
 
-const Movie = model("Movie", userSchema);
+const Movie = model("Movie", movieSchema);
 
 module.exports = Movie;

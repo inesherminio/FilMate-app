@@ -57,6 +57,18 @@
 </div>
 
 <div class="btn-group" role="group" aria-label="Movie Decision">
-  <button type="button" class="btn btn-warning">Watch</button>
-  <button type="button" class="btn btn-secondary">Chill</button>
+  <form action="/movie/" method="POST" >
+    <input type="hidden" name="title" value="{{movie.title}}"></input>
+    <input type="hidden" name="image" value="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"></input>
+    <input type="hidden" name="movieId" value="{{movie.id}}"></input>
+    <input type="hidden" name="decision" value="watch"></input>
+    <button type="submit" class="btn btn-warning">Watch</button>
+  </form>
+  <form action="/movie/" method="POST">
+    <input type="hidden" name="title" value="{{movie.title}}"></input>
+    <input type="hidden" name="image" value="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"></input>
+    <input type="hidden" name="movieId" value="{{movie.id}}"></input>
+    <input type="hidden" name="decision" value="chill"></input>
+    <button type="submit" class="btn btn-secondary">Chill</button>
+  </form>
 </div>

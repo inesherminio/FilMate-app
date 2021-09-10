@@ -46,7 +46,7 @@ module.exports = (app) => {
       store: MongoStore.create({
         mongoUrl: (MONGO_URI =
           process.env.MONGODB_URI || "mongodb://localhost/FilMate"),
-        ttl: 60 * 60 * 24 * 1,
+        ttl: 60 * 60 * 24 * 7,
       }),
     })
   );

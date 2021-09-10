@@ -10,6 +10,14 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/", isLoggedIn, (req, res, next) => {});
+router.post("/", isLoggedIn, (req, res, next) => {
+  const { movieId, rank } = req.body;
+  Movie.findByIdAndUpdate(movieId, { rank }, { new: true })
+    .then((movie) => {
+      console.log(movie);
+      res.redirect("/movie-list");
+    })
+    .catch((err) => next(err));
+});
 
 module.exports = router;

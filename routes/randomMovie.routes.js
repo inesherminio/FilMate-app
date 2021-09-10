@@ -6,7 +6,7 @@ const axios = require("axios");
 //https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1` (Top rated route)
 //https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&include_adult=false (search movies route)
 
-router.get("/random-movie", isLoggedIn, (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   let index = Math.floor(Math.random() * 20);
   let page = Math.floor(Math.random() * 500);
   axios
@@ -21,13 +21,13 @@ router.get("/random-movie", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.post("/random-movie", isLoggedIn, (req, res, next) => {
+router.post("/", isLoggedIn, (req, res, next) => {
   const { title, image, decision, movieId } = req.body;
   const { loggedInUser } = req.session;
   Movie.create({ title, image, user: loggedInUser, decision, movieId })
     .then((movie) => {
       //console.log("You made a decision on this movie:", movie.populate("user"));
-      res.redirect("/movie/random-movie");
+      res.redirect("/random-movie");
     })
     .catch((err) => {
       console.log(err);

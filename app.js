@@ -36,7 +36,7 @@ const profileRoutes = require("./routes/profile.routes.js");
 app.use("/profile", profileRoutes);
 
 const randomMovieRoutes = require("./routes/randomMovie.routes.js");
-app.use("/movie", randomMovieRoutes);
+app.use("/random-movie", randomMovieRoutes);
 
 const movieListRoutes = require("./routes/movieList.routes.js");
 app.use("/movie-list", movieListRoutes);

@@ -19,10 +19,19 @@ const movieSchema = new Schema({
   },
   decision: {
     type: String,
-    Enum: ["Watch", "Chill"],
+    enum: ["Watch", "Chill"],
   },
   rank: {
-    type: Number,
+    type: String,
+    enum: [
+      "Haven't watched it yet",
+      "1 Star",
+      "2 Stars",
+      "3 Stars",
+      "4 Stars",
+      "5 Stars",
+    ],
+    default: "Haven't watched it yet",
   },
   alternative: {
     type: Schema.Types.ObjectId,

@@ -1,1 +1,30 @@
 <h1>These are your movies!</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Title</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Your Choice</th>
+      <th scope="col">Your Rank</th>
+      <th scope="col">Alternative Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each movies}}
+      <tr>
+        <th scope="row"><img
+            src="{{this.image}}"
+            alt="{{this.title}} poster"
+            width="100"
+          /></th>
+        <td>{{this.title}}<br /><a href="">See movie details</a></td>
+        <td>{{this.genre}}</td>
+        <td>{{this.decision}}</td>
+        <td>{{this.rank}}</td>
+        <td>{{this.alternative}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

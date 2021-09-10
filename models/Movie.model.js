@@ -8,16 +8,18 @@ const movieSchema = new Schema({
   image: {
     type: String,
   },
-  genre: {
-    type: String,
-  },
+  genre: [
+    {
+      type: String,
+    },
+  ],
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
   decision: {
     type: String,
-    Enum: ["watch", "chill"],
+    Enum: ["Watch", "Chill"],
   },
   rank: {
     type: Number,

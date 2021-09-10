@@ -14,20 +14,19 @@ router.get("/random-movie", isLoggedIn, (req, res, next) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
     )
     .then((movieFromApi) => {
-      console.log(movieFromApi.data.results[index]);
+      //console.log(movieFromApi.data.results[index]);
       res.render("movies/random-movie.hbs", {
         movie: movieFromApi.data.results[index],
       });
     });
 });
 
-//! review route bellow
 router.post("/random-movie", isLoggedIn, (req, res, next) => {
   const { title, image, decision, movieId } = req.body;
   const { loggedInUser } = req.session;
   Movie.create({ title, image, user: loggedInUser, decision, movieId })
     .then((movie) => {
-      console.log("You made a decision on this movie:", movie.populate("user"));
+      //console.log("You made a decision on this movie:", movie.populate("user"));
       res.redirect("/movie/random-movie");
     })
     .catch((err) => {

@@ -22,7 +22,7 @@ router.get("/random-movie", isLoggedIn, (req, res, next) => {
 });
 
 //! review route bellow
-router.post("/", isLoggedIn, (req, res, next) => {
+router.post("/random-movie", isLoggedIn, (req, res, next) => {
   const { title, image, decision, movieId } = req.body;
   const { loggedInUser } = req.session;
   Movie.create({ title, image, user: loggedInUser, decision, movieId })

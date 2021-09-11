@@ -11,9 +11,10 @@ document.addEventListener(
   false
 );
 
-let edit = document.getElementById("edit-rank");
-let rankForm = document.getElementById("select-rank");
+/* let edit = document.querySelectorAll(".edit-rank");
+let rankForm = document.querySelectorAll(".select-rank");
 
-edit.addEventListener("click", () => {
+edit.addEventListener("click", (event) => {
+  console.log(event);
   rankForm.removeAttribute("disabled");
-});
+}); */

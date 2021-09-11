@@ -42,6 +42,7 @@ module.exports = (app) => {
     session({
       secret: process.env.SESSION_SECRET,
       saveUninitialized: false,
+      resave: false,
       cookie: { maxAge: 60 * 60 * 24 * 7 },
       store: MongoStore.create({
         mongoUrl: (MONGO_URI =

@@ -25,7 +25,7 @@
         <td>
           <form action="/movie-list" method="POST">
             <input type="hidden" name="movieId" value="{{this._id}}" />
-            <select id="select-rank" name="rank" disabled>
+            <select class="select-rank" name="rank">
               <option value="{{this.rank}}" selected>{{this.rank}}</option>
               <option value="Haven't watched it yet">Haven't watched it yet</option>
               <option value="1 Star">1 Star</option>
@@ -36,7 +36,7 @@
             </select>
             <img
               src="images/edit-logo-yellow.jpg"
-              id="edit-rank"
+              class="edit-rank"
               alt="Edit"
               width="25"
             />

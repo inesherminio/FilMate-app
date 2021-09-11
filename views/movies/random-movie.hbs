@@ -49,8 +49,14 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
       >
-        <h5 class="card-title">{{movie.title}}</h5>
-        <p class="card-text">{{movie.overview}}</p>
+        <h5 class="card-title">Title: {{movie.title}}</h5>
+        <p class="card-text">Overview: {{movie.overview}}</p>
+        <p class="card-text">Genre:</p>
+        <ul>
+          {{#each movie.genre_names}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
       </div>
     </div>
   </div>
@@ -62,7 +68,13 @@
     <input type="hidden" name="title" value="{{movie.title}}"></input>
     <input type="hidden" name="image" value="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"></input>
     <input type="hidden" name="movieId" value="{{movie.id}}"></input>
+    <select name="genre" multiple hidden>
+     {{#each movie.genre_names}}
+    <option value="{{this}}" selected></option>
+      {{/each}} 
+    </select>
     <button type="submit" name="decision" value="Watch" class="btn btn-warning">Watch</button>
     <button type="submit" name="decision" value="Chill" class="btn btn-secondary">Chill</button>
   </form>
 </div>
+

@@ -86,8 +86,6 @@ router.post("/login", (req, res, next) => {
         if (passwordCheck) {
           //* Authenticate the user
           req.session.loggedInUser = user;
-          req.app.locals.loggedInUser = user;
-          req.app.locals.isLoggedIn = true;
           res.redirect("/profile");
         } else {
           res.render("index", {

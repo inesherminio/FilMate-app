@@ -7,7 +7,9 @@
       <th scope="col">Title</th>
       <th scope="col">Genre</th>
       <th scope="col">Your Choice</th>
-      <th scope="col">Your Rank</th>
+      <th scope="col">
+        {{if }}
+        Your Rank</th>
       <th scope="col">Alternative Activity</th>
     </tr>
   </thead>
@@ -25,7 +27,7 @@
         <td>
           <form action="/movie-list" method="POST">
             <input type="hidden" name="movieId" value="{{this._id}}" />
-            <select class="select-rank" name="rank">
+            <select class="select-rank" id="edit-rank-{{this._id}}" name="rank">
               <option value="{{this.rank}}" selected>{{this.rank}}</option>
               <option value="Haven't watched it yet">Haven't watched it yet</option>
               <option value="1 Star">1 Star</option>
@@ -37,6 +39,7 @@
             <img
               src="images/edit-logo-yellow.jpg"
               class="edit-rank"
+              id="{{this._id}}"
               alt="Edit"
               width="25"
             />
@@ -50,7 +53,38 @@
             </button>
           </form>
         </td>
-        <td>{{this.alternative}}</td>
+        <td>
+          <form action="/movie-list" method="POST">
+            <input type="hidden" name="movieId" value="{{this._id}}" />
+            <select
+              class="select-alternative"
+              id="edit-alternative-{{this._id}}"
+              name="alternative"
+            >
+              <option
+                value="{{this.alternative}} selected"
+              >{{this.alternative}}</option>
+              {{#each alternativeOptions.interests}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+            <img
+              src="images/edit-logo-yellow.jpg"
+              class="edit-alternative"
+              id="{{this._id}}"
+              alt="Edit"
+              width="25"
+            />
+            <button type="submit">
+              <img
+                src="images/save-logo-yellow.jpg"
+                id="save-alternative"
+                alt="Save"
+                width="25"
+              />
+            </button>
+          </form>
+        </td>
       </tr>
     {{/each}}
   </tbody>

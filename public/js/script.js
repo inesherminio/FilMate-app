@@ -11,10 +11,12 @@ document.addEventListener(
   false
 );
 
-/* let edit = document.querySelectorAll(".edit-rank");
-let rankForm = document.querySelectorAll(".select-rank");
+/*let editBtnArr = document.querySelectorAll(".edit-rank");
 
-edit.addEventListener("click", (event) => {
-  console.log(event);
-  rankForm.removeAttribute("disabled");
-}); */
+editBtnArr.forEach((editBtn) => {
+  editBtn.addEventListener("click", (event) => {
+    let rankForm = document.getElementById(`select-rank-${event.target.id}`);
+    console.log(rankForm);
+    rankForm.removeAttribute("disabled");
+  });
+});*/

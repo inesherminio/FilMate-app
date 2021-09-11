@@ -43,7 +43,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.post("/", isLoggedIn, (req, res, next) => {
   const { title, image, decision, movieId, genre } = req.body;
   const { loggedInUser } = req.session;
-  Movie.create({ title, image, user: loggedInUser, decision, movieId, genre })
+  Movie.create({
+    title,
+    image,
+    user: loggedInUser,
+    decision,
+    movieId,
+    genre,
+    alternativeOptions: loggedInUser,
+  })
     .then((movie) => {
       //console.log("You made a decision on this movie:", movie.populate("user"));
       res.redirect("/random-movie");

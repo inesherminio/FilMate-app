@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th scope="col">Your Movies</th>
+      <th scope="col">Title</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,8 @@
   </tbody>
 </table>
 
+
+
 <table class="table">
   <thead>
     <tr>
@@ -31,9 +34,21 @@
     {{#each interests}}
       <tr>
         <td>{{this}}</td>
+        <td><button type="submit"  class="btn btn-secondary" form="interests-form" name="outInterest">Delete</button></td> 
     {{/each}}
+    <br>
+    <tr>
+      <form action="/profile" method="POST" id="interests-form">
+        <label for="interest">Add your interests here</label>
+        <input type="text" name="inInterest" ></input>
+
+        <button type="submit" name="inInterest">submit</button>
+      </form>
+    </tr>
   </tbody>
 </table>
+
+
 
 <table class="table">
   <thead>

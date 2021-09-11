@@ -13,7 +13,10 @@ router.get("/", isLoggedIn, (req, res, next) => {
   )
     .then((moviesFromDB) => {
       movies = moviesFromDB;
-      return User.findById(req.session.loggedInUser._id).populate("following");
+      return User.findById(req.session.loggedInUser._id).populate(
+        "following",
+        "following"
+      );
     })
     .then((user) => {
       console.log(user);
@@ -23,6 +26,20 @@ router.get("/", isLoggedIn, (req, res, next) => {
         interests,
         following,
       });
+    })
+    .catch((err) => next(err));
+});
+
+router.post("/", isLoggedIn, (req, res, next) => {
+  const { inInterest, outInterest } = req.body;
+
+  User.findOneAndUpdate(
+    { user: req.session.loggedInUser._id },
+    { $push: { interests: inInterest }, $pull: { interests: outInterest } },
+    { new: true }
+  )
+    .then(() => {
+      res.redirect("/profile");
     })
     .catch((err) => next(err));
 });

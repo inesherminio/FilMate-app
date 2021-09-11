@@ -3,7 +3,11 @@ const { isLoggedIn } = require("../middlewares/auth.config");
 const Movie = require("../models/Movie.model");
 
 router.get("/", isLoggedIn, (req, res, next) => {
-  Movie.find({ user: req.session.loggedInUser._id })
+  Movie.find(
+    { user: req.session.loggedInUser._id },
+    {},
+    { sort: { createdAt: -1 } }
+  )
     .then((movies) => {
       res.render("movies/movie-list.hbs", { movies });
     })

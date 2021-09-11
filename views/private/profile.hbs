@@ -28,15 +28,9 @@
     </tr>
   </thead>
   <tbody>
-    {{#each movies}}
+    {{#each interests}}
       <tr>
-        <th scope="row"><img
-            src="{{this.image}}"
-            alt="{{this.title}} poster"
-            width="100"
-          /></th>
-        <td>{{this.title}}</td>
-        <td>
+        <td>{{this}}</td>
     {{/each}}
   </tbody>
 </table>
@@ -48,15 +42,9 @@
     </tr>
   </thead>
   <tbody>
-    {{#each movies}}
+    {{#each following}}
       <tr>
-        <th scope="row"><img
-            src="{{this.image}}"
-            alt="{{this.title}} poster"
-            width="100"
-          /></th>
-        <td>{{this.title}}</td>
-        <td>
+        <td>{{this}}</td>
     {{/each}}
   </tbody>
 </table>

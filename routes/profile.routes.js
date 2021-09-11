@@ -6,13 +6,17 @@ const User = require("../models/User.model");
 // our routes here
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
-  Movie.find({ user: req.session.loggedInUser._id }, {}, { limit: 5 })
+  Movie.find(
+    { user: req.session.loggedInUser._id },
+    {},
+    { limit: 5, sort: { createdAt: -1 } }
+  )
     .then((moviesFromDB) => {
       movies = moviesFromDB;
-      return User.find().populate("following");
+      return User.findById(req.session.loggedInUser._id).populate("following");
     })
     .then((user) => {
-      //console.log(user.interests[0]);
+      console.log(user);
       const { interests, following } = user;
       res.render("private/profile", {
         movies,

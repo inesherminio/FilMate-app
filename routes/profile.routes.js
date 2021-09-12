@@ -35,7 +35,7 @@ router.post("/", isLoggedIn, (req, res, next) => {
 
   User.findOneAndUpdate(
     { user: req.session.loggedInUser._id },
-    { $push: { interests: inInterest }, $pull: { interests: outInterest } },
+    { $push: { interests: inInterest } },
     { new: true }
   )
     .then(() => {

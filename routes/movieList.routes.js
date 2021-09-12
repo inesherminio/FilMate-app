@@ -28,4 +28,16 @@ router.post("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.get("/:id", (req, res, next) => {
+  const { id } = req.params;
+  let movie;
+  Movie.findById(id)
+    .then((movieFromDb) => {
+      movie = movieFromDb;
+    })
+    .catch((err) => next(err));
+
+  res.render("movies/movie-detail");
+});
+
 module.exports = router;

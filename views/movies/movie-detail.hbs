@@ -1,2 +1,46 @@
-<h1>Movie Details</h1>
+<h1>More about {{movieFromApi.title}}...</h1>
 
+<div>
+  <h2>Movie Details</h2>
+  {{#if movieFromApi.poster_path}}
+    <img
+      src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movieFromApi.poster_path}}"
+      alt="{{movieFromApi.title}}'s poster"
+    />
+  {{/if}}
+  <h3><strong>{{movieFromApi.title}}</strong></h3>
+  {{#if movieFromApi.tagline}}
+    <h5><strong>Tagline:</strong> {{movieFromApi.tagline}}</h5>
+  {{/if}}
+  <h6><strong>Genre:</strong></h6>
+  <ul>
+    {{#each movieFromApi.genres}}
+      <li>{{this.name}}</li>
+    {{/each}}
+  </ul>
+  {{#if movieFromApi.overview}}
+    <p><strong>Overview:</strong> {{movieFromApi.overview}}</p>
+  {{/if}}
+  {{#if movieFromApi.release_date}}
+    <p><strong>Release date:</strong> {{movieFromApi.release_date}}</p>
+  {{/if}}
+</div>
+
+<div>
+  <h2>Who else likes this movie?</h2>
+  <ul>
+    {{#each movieFromDb}}
+      <li>
+        <img
+          src="{{this.user.profilePic}}"
+          alt="{{this.user.username}}'s profile picture"
+          width="50"
+        />
+        {{this.user.username}}
+        <form action="/:id" method="POST">
+          <button type="submit">Follow</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+</div>

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { default: axios } = require("axios");
 const { isLoggedIn } = require("../middlewares/auth.config");
 const Movie = require("../models/Movie.model");
 const User = require("../models/User.model");
@@ -30,14 +31,28 @@ router.post("/", isLoggedIn, (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
-  let movie;
-  Movie.findById(id)
-    .then((movieFromDb) => {
-      movie = movieFromDb;
+  let movieFromDb;
+  Movie.find({
+    movieId: id,
+  })
+    .populate("user", "username profilePic")
+    .then((movies) => {
+      movieFromDb = movies;
+      console.log("here are movies from db:", movies);
+      return axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=609f1b0969bd3b2e770487ab8987193b&language=en-US`
+      );
+    })
+    .then((movieFromApi) => {
+      console.log("here are movies from api:", movieFromApi);
+      res.render("movies/movie-detail", {
+        movieFromDb,
+        movieFromApi: movieFromApi.data,
+      });
     })
     .catch((err) => next(err));
-
-  res.render("movies/movie-detail");
 });
+
+router.post("/:id", (req, res, next) => {});
 
 module.exports = router;

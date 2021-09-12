@@ -38,10 +38,12 @@
         role="tabpanel"
         aria-labelledby="home-tab"
       >
+      {{#if movie.poster_path}}
         <img
           src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"
           alt="{{movie.title}} poster picture"
         />
+        {{/if}}
       </div>
       <div
         class="tab-pane"
@@ -50,7 +52,9 @@
         aria-labelledby="profile-tab"
       >
         <h5 class="card-title">Title: {{movie.title}}</h5>
+        {{#if movie.overview}}
         <p class="card-text">Overview: {{movie.overview}}</p>
+        {{/if}}
         <p class="card-text">Genre:</p>
         <ul>
           {{#each movie.genre_names}}

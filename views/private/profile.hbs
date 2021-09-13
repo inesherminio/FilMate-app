@@ -34,7 +34,12 @@
     {{#each interest}}
       <tr>
         <td>{{this.activity}}</td>
-        <td><button type="submit"  class="btn btn-secondary" form="delete-form" >Delete</button></td> 
+        <td>
+          <form action="/profile/delete" method="POST" id="delete-form">
+          <input type="hidden" name="activity" value="{{this._id}}">
+          <button type="submit"  class="btn btn-secondary" >Delete</button>
+          </form>
+          </td> 
     {{/each}}
     <br>
     <tr>
@@ -45,10 +50,6 @@
         <button type="submit">submit</button>
       </form>
   </tbody>
-
-  <form action="/profile/delete" method="POST" id="delete-form">
-    <input type="hidden" name="activity">
-  </form>
 </table>
 
 

@@ -47,13 +47,14 @@ router.post("/create", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/delete", isLoggedIn, (req, res, nect) => {
+router.post("/delete", isLoggedIn, (req, res, next) => {
   const { activity } = req.body;
-  Interest.findOneAndRemove({
-    activity,
-  }).then(() => {
-    res.redirect("/profile");
-  });
+  //console.log("here's activity:", activity);
+  Interest.findByIdAndDelete(activity)
+    .then((activity) => {
+      res.redirect("/profile");
+    })
+    .catch((err) => next(err));
 });
 
 module.exports = router;

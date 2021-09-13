@@ -20,12 +20,10 @@ const userSchema = new Schema({
     type: String,
     default: "images/avatar.png",
   },
-  interests: [
-    {
-      type: String,
-      max: 15,
-    },
-  ],
+  interests: {
+    type: Schema.Types.ObjectId,
+    ref: "Interest",
+  },
   following: [
     {
       type: Schema.Types.ObjectId,

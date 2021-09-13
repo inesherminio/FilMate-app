@@ -2,10 +2,12 @@ const router = require("express").Router();
 const { isLoggedIn } = require("../middlewares/auth.config");
 const Movie = require("../models/Movie.model");
 const User = require("../models/User.model");
+const Interest = require("../models/Interest.model");
 
 // our routes here
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
+  let user;
   Movie.find(
     { user: req.session.loggedInUser._id },
     {},
@@ -18,30 +20,40 @@ router.get("/", isLoggedIn, (req, res, next) => {
         "following"
       );
     })
-    .then((user) => {
-      console.log(user);
-      const { interests, following } = user;
+    .then((userFromDB) => {
+      user = userFromDB;
+      return Interest.find();
+    })
+    .then((interest) => {
       res.render("private/profile", {
         movies,
-        interests,
-        following,
+        user,
+        interest,
       });
     })
     .catch((err) => next(err));
 });
 
 router.post("/", isLoggedIn, (req, res, next) => {
-  const { inInterest, outInterest } = req.body;
-
-  User.findOneAndUpdate(
-    { user: req.session.loggedInUser._id },
-    { $push: { interests: inInterest } },
-    { new: true }
-  )
-    .then(() => {
+  const { activity } = req.body;
+  Interest.create({
+    activity,
+    user: req.session.loggedInUser._id,
+  })
+    .then((yourActivity) => {
+      console.log("here is your interest:", { yourActivity });
       res.redirect("/profile");
     })
     .catch((err) => next(err));
+});
+
+router.post("/", isLoggedIn, (req, res, nect) => {
+  const { activity } = req.body;
+  Interest.findOneAndDelete({
+    activity,
+  }).then(() => {
+    res.redirect("/profile");
+  });
 });
 
 module.exports = router;

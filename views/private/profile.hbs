@@ -31,20 +31,19 @@
     </tr>
   </thead>
   <tbody>
-    {{#each interests}}
+    {{#each interest}}
       <tr>
-        <td>{{this}}</td>
-        <td><button type="submit"  class="btn btn-secondary" form="interests-form" name="outInterest">Delete</button></td> 
+        <td>{{this.activity}}</td>
+        <td><button type="submit"  class="btn btn-secondary" form="activity-form" name="outInterest">Delete</button></td> 
     {{/each}}
     <br>
     <tr>
-      <form action="/profile" method="POST" id="interests-form">
-        <label for="interest">Add your interests here</label>
-        <input type="text" name="inInterest" ></input>
+      <form action="/profile" method="POST" id="activity-form">
+        <label for="activity">Add your interests here</label>
+        <input type="text" name="activity" ></input>
 
-        <button type="submit" name="inInterest">submit</button>
+        <button type="submit">submit</button>
       </form>
-    </tr>
   </tbody>
 </table>
 
@@ -64,8 +63,3 @@
   </tbody>
 </table>
 
-<!--{{#each movies}}
-  <p>{{this.title}}</p>
-{{/each}}
-
-<p>{{interests}}</p>-->

@@ -34,7 +34,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/", isLoggedIn, (req, res, next) => {
+router.post("/create", isLoggedIn, (req, res, next) => {
   const { activity } = req.body;
   Interest.create({
     activity,
@@ -47,9 +47,9 @@ router.post("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/", isLoggedIn, (req, res, nect) => {
+router.post("/delete", isLoggedIn, (req, res, nect) => {
   const { activity } = req.body;
-  Interest.findOneAndDelete({
+  Interest.findOneAndRemove({
     activity,
   }).then(() => {
     res.redirect("/profile");

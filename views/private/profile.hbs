@@ -61,9 +61,9 @@
     </tr>
   </thead>
   <tbody>
-    {{#each following}}
+    {{#each user.following}}
       <tr>
-        <td>{{this}}</td>
+        <td>{{this.username}}</td>
     {{/each}}
   </tbody>
 </table>

@@ -22,7 +22,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
     })
     .then((userFromDB) => {
       user = userFromDB;
-      return Interest.find();
+      return Interest.find({ user: user._id });
     })
     .then((interest) => {
       res.render("private/profile", {
@@ -36,12 +36,24 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 router.post("/create", isLoggedIn, (req, res, next) => {
   const { activity } = req.body;
+  let interests;
   Interest.create({
     activity,
     user: req.session.loggedInUser._id,
   })
     .then((yourActivity) => {
       console.log("here is your interest:", { yourActivity });
+      return Interest.find({ user: req.session.loggedInUser._id });
+    })
+    .then((userInterests) => {
+      interests = userInterests;
+      return User.findByIdAndUpdate(
+        req.session.loggedInUser._id,
+        { interests: interests },
+        { new: true }
+      );
+    })
+    .then((user) => {
       res.redirect("/profile");
     })
     .catch((err) => next(err));
@@ -49,9 +61,21 @@ router.post("/create", isLoggedIn, (req, res, next) => {
 
 router.post("/delete", isLoggedIn, (req, res, next) => {
   const { activity } = req.body;
+  let interests;
   //console.log("here's activity:", activity);
   Interest.findByIdAndDelete(activity)
     .then((activity) => {
+      return Interest.find({ user: req.session.loggedInUser._id });
+    })
+    .then((userInterests) => {
+      interests = userInterests;
+      return User.findByIdAndUpdate(
+        req.session.loggedInUser._id,
+        { interests: interests },
+        { new: true }
+      );
+    })
+    .then((user) => {
       res.redirect("/profile");
     })
     .catch((err) => next(err));

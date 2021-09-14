@@ -29,7 +29,7 @@ const userSchema = new Schema({
   following: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Connection",
     },
   ],
 });

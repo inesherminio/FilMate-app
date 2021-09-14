@@ -37,7 +37,8 @@
           width="50"
         />
         {{this.user.username}}
-        <form action="/:id" method="POST">
+        <form action="/movie-list/{{this.movieId}}" method="POST">
+          <input type="hidden" name="user" value="{{this.user._id}}" />
           <button type="submit">Follow</button>
         </form>
       </li>

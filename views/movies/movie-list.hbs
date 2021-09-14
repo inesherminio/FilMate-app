@@ -69,8 +69,8 @@
                 <option
                   value="{{this.alternative}} selected"
                 >{{this.alternative}}</option>
-                {{#each alternativeOptions.interests}}
-                  <option value="{{this}}">{{this}}</option>
+                {{#each ../interests}}
+                  <option value="{{this.activity}}">{{this.activity}}</option>
                 {{/each}}
               </select>
               <img

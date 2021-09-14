@@ -34,10 +34,6 @@ const movieSchema = new Schema(
       ],
       default: "Haven't watched it yet",
     },
-    alternativeOptions: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
     alternative: {
       type: String,
     },

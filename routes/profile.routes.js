@@ -15,9 +15,20 @@ router.get("/", isLoggedIn, (req, res, next) => {
   )
     .then((moviesFromDB) => {
       movies = moviesFromDB;
-      return User.findById(req.session.loggedInUser._id).populate("following");
+      return User.findById(req.session.loggedInUser._id).populate({
+        path: "following",
+        populate: {
+          path: "friend",
+          select: {
+            _id: 1,
+            username: 1,
+            profilePic: 1,
+          },
+        },
+      });
     })
     .then((userFromDB) => {
+      //console.log("the user:", userFromDB.following);
       user = userFromDB;
       return Interest.find({ user: user._id });
     })

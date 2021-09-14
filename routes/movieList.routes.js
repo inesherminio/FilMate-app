@@ -65,7 +65,7 @@ router.get("/:id", (req, res, next) => {
 router.post("/:id", (req, res, next) => {
   const { user } = req.body;
   let connections;
-  Connection.create({ following: user, user: req.session.loggedInUser._id })
+  Connection.create({ friend: user, user: req.session.loggedInUser._id })
     .then((followee) => {
       return Connection.find({ user: req.session.loggedInUser._id });
     })

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const connectionSchema = new Schema({
-  following: {
+  friend: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },

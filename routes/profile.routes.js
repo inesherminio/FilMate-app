@@ -3,11 +3,13 @@ const { isLoggedIn } = require("../middlewares/auth.config");
 const Movie = require("../models/Movie.model");
 const User = require("../models/User.model");
 const Interest = require("../models/Interest.model");
+const Connection = require("../models/Connection.model");
 
 // our routes here
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
   let user;
+  let interest;
   Movie.find(
     { user: req.session.loggedInUser._id },
     {},
@@ -15,29 +17,34 @@ router.get("/", isLoggedIn, (req, res, next) => {
   )
     .then((moviesFromDB) => {
       movies = moviesFromDB;
-      return User.findById(req.session.loggedInUser._id).populate({
-        path: "following",
-        populate: {
-          path: "friend",
-          select: {
-            _id: 1,
-            username: 1,
-            profilePic: 1,
-          },
-        },
-      });
+      return User.findById(req.session.loggedInUser._id);
     })
     .then((userFromDB) => {
       //console.log("the user:", userFromDB.following);
       user = userFromDB;
+      console.log(user);
       return Interest.find({ user: user._id });
     })
-    .then((interest) => {
+    .then((userInterests) => {
+      interest = userInterests;
+      return Connection.find({ user: user._id }).populate("friend");
+    })
+    .then((connections) => {
       res.render("private/profile", {
         movies,
         user,
         interest,
+        connections,
       });
+    })
+    .catch((err) => next(err));
+});
+
+router.post("/unfollow", (req, res, next) => {
+  const { connection } = req.body;
+  Connection.findByIdAndDelete(connection)
+    .then((connection) => {
+      res.redirect("/profile");
     })
     .catch((err) => next(err));
 });

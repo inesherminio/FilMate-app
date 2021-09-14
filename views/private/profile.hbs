@@ -61,11 +61,23 @@
     </tr>
   </thead>
   <tbody>
-        {{user.following}}
+    {{#each connections}}
       <tr>
-    {{#each user.following}}
-        <td>{{this.username}}</td>
-    {{/each}}
+        <td>
+          <img
+          src="{{this.friend.profilePic}}"
+          alt="{{this.friend.username}}'s profile picture"
+          width="50"
+        />
+          {{this.friend.username}}
+          <form action="/profile/unfollow" method="POST">
+          <input type="hidden" name="connection" value="{{this._id}}">
+          <button type="submit">
+            Unfollow
+          </button>
+          </form>
+          </td>
       </tr>
+    {{/each}}
   </tbody>
 </table>

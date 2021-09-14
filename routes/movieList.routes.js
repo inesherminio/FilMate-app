@@ -8,6 +8,7 @@ const User = require("../models/User.model");
 
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
+  console.log(req.body);
   Movie.find(
     { user: req.session.loggedInUser._id },
     {},

@@ -5,13 +5,56 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
-      <th scope="col">Genre
+      <th scope="col">Genre 
       </th>
       <th scope="col">Your Choice</th>
       <th scope="col">Rank or Alternative Activity</th>
     </tr>
   </thead>
   <tbody>
+    <form action="/movie-list" method="GET">
+      <div>
+        <input type="radio" name="genre" value="action">
+        <label for="action">Action</label>
+
+        <input type="radio" name="genre" value="comedy">
+        <label for="comedy">Comedy</label>
+        
+        <input type="radio" name="genre" value="adventure">
+        <label for="adventure">Adventure</label>
+
+        <input type="radio" name="genre" value="fantasy">
+        <label for="fantasy">Fantasy</label>
+
+      <div>
+        <input type="radio" name="decision" value="watch">
+        <label for="watch">Watch</label>
+
+        <input type="radio" name="decision" value="chill">
+        <label for="chill">Chill</label>
+        
+      </div>
+
+      <div>
+        <input type="radio" name="rank" value="1star">
+        <label for="1star">1 Stars</label>
+
+        <input type="radio" name="rank" value="2star">
+        <label for="2star">2 Stars</label>
+
+        <input type="radio" name="rank" value="3 star">
+        <label for="3 star">3 Stars</label>
+
+        <input type="radio" name="rank" value="4star">
+        <label for="4star">4 Stars</label>
+
+        <input type="radio" name="rank" value="5star">
+        <label for="5star">5 Stars</label>
+      </div>
+      <button type="submit">submit</button>
+      
+
+    </form>
     {{#each movies}}
       <tr>
         <th scope="row"><img

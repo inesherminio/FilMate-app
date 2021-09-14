@@ -22,6 +22,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
       );
     })
     .then((genres) => {
+      //console.log(genres.data.genres);
       const movie = {
         ...JSON.parse(JSON.stringify(movieData)),
         genre_names: [],

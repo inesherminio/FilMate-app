@@ -8,7 +8,6 @@ const User = require("../models/User.model");
 
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
-  console.log(req.body);
   Movie.find(
     { user: req.session.loggedInUser._id },
     {},
@@ -19,7 +18,36 @@ router.get("/", isLoggedIn, (req, res, next) => {
       return User.findById(req.session.loggedInUser._id).populate("interests");
     })
     .then((user) => {
-      console.log(user.interests);
+      //console.log(user.interests);
+      res.render("movies/movie-list", {
+        movies,
+        interests: user.interests,
+      });
+    })
+    .catch((err) => next(err));
+});
+
+router.get("/search", (req, res, next) => {
+  console.log("filter choices", req.query);
+  const { genre, decision, rank } = req.query;
+  let movies;
+  Movie.find(
+    {
+      user: req.session.loggedInUser._id,
+      genre: { $in: genre },
+      decision: decision,
+      rank: rank,
+    },
+    {},
+    { sort: { createdAt: -1 } }
+  )
+    .then((userMovies) => {
+      movies = userMovies;
+      console.log(movies);
+      return User.findById(req.session.loggedInUser._id).populate("interests");
+    })
+    .then((user) => {
+      //console.log(user.interests);
       res.render("movies/movie-list", {
         movies,
         interests: user.interests,
@@ -64,6 +92,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/:id", (req, res, next) => {
+  const { id } = req.params;
   const { user } = req.body;
   let connections;
   Connection.create({ friend: user, user: req.session.loggedInUser._id })
@@ -79,7 +108,7 @@ router.post("/:id", (req, res, next) => {
       );
     })
     .then((user) => {
-      res.redirect("/movie-list");
+      res.redirect(`/movie-list/${id}`);
     })
     .catch((err) => next(err));
 });

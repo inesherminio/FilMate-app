@@ -20,3 +20,11 @@ editBtnArr.forEach((editBtn) => {
     rankForm.removeAttribute("disabled");
   });
 });*/
+
+let followBtnArr = document.getElementsByClassName("follow-btn");
+
+followBtnArr.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    console.log(event);
+  });
+});

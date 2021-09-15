@@ -70,6 +70,7 @@ router.post("/", isLoggedIn, (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   let movieFromDb;
+  let movieFromApi;
   Movie.find({
     movieId: id,
     user: { $ne: req.session.loggedInUser._id },
@@ -82,11 +83,26 @@ router.get("/:id", (req, res, next) => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=609f1b0969bd3b2e770487ab8987193b&language=en-US`
       );
     })
-    .then((movieFromApi) => {
+    .then((movie) => {
       //console.log("here are movies from api:", movieFromApi);
+      movieFromApi = movie;
+      return User.findById(
+        req.session.loggedInUser._id,
+        "_id username following"
+      ).populate({
+        path: "following",
+        populate: {
+          path: "friend",
+          select: "username",
+        },
+      });
+    })
+    .then((user) => {
+      //console.log(user.following[0].friend);
       res.render("movies/movie-detail", {
         movieFromDb,
         movieFromApi: movieFromApi.data,
+        user: user.following,
       });
     })
     .catch((err) => next(err));

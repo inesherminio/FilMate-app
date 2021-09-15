@@ -39,7 +39,11 @@
         {{this.user.username}}
         <form action="/movie-list/{{this.movieId}}" method="POST">
           <input type="hidden" name="user" value="{{this.user._id}}" />
-          <button type="submit">Follow</button>
+          <button
+            type="submit"
+            class="follow-btn"
+            id="{{this.user._id}}"
+          >Follow</button>
         </form>
       </li>
     {{/each}}

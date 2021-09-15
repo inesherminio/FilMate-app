@@ -30,17 +30,18 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.get("/search", (req, res, next) => {
   console.log("filter choices", req.query);
   const { genre, decision, rank } = req.query;
+  let query = { user: req.session.loggedInUser._id };
+  if (genre) {
+    query.genre = { $in: genre };
+  }
+  if (decision) {
+    query.decision = decision;
+  }
+  if (rank) {
+    query.rank = rank;
+  }
   let movies;
-  Movie.find(
-    {
-      user: req.session.loggedInUser._id,
-      genre: { $in: genre },
-      decision: decision,
-      rank: rank,
-    },
-    {},
-    { sort: { createdAt: -1 } }
-  )
+  Movie.find(query, {}, { sort: { createdAt: -1 } })
     .then((userMovies) => {
       movies = userMovies;
       console.log(movies);

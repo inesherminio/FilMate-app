@@ -1,0 +1,85 @@
+<h1>Events</h1>
+
+<button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#eventModal"
+        >Host an event</button>
+
+{{!-- Event Modal --}}
+<div
+  class="modal fade"
+  id="eventModal"
+  tabindex="-1"
+  aria-labelledby="eventModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventModalLabel">Host an event</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+        <form action="/events/create" method="POST">
+      <div class="modal-body">
+          <label for="name">Name</label>
+          <input type="text" name="name" />
+          <br />
+          <label for="movieRelatedTo">Movie related</label>
+          <select name="movieRelatedTo" >
+              {{#each movies}}
+              <option value="{{this._id}}">{{this.title}}</option>
+              {{/each}}
+          </select>
+          <br>
+          <label for="date">Date</label>
+          <input type="datetime-local" name="date" />
+          <br />
+          <label for="description">Description</label>
+          <textarea name="description" cols="30" rows="10"></textarea>
+          <br />
+          <input type="hidden" name="host" value="{{movies.0.user}}" />
+          <br />
+          <label for="link">Link for the online event</label>
+          <input type="text" name="link" />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Close</button>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+{{#each events}}
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Related to the movie {{this.movieRelatedTo.title}}</li>
+    <li class="list-group-item">When: {{this.date}}</li>
+    <li class="list-group-item">Hosted by {{this.host.username}}</li>
+    {{#if this.link}}
+    <li class="list-group-item">Link to the online event: <a href="#" class="card-link">{{this.link}}</a></li>
+    {{/if}}
+  </ul>
+  <div class="card-body">
+    <button type="button">Attending</button>
+    <a href="#">See who else is going</a>
+  </div>
+</div>
+{{/each}}
+</div>

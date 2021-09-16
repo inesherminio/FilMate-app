@@ -4,10 +4,6 @@ const bcrypt = require("bcrypt");
 const fileUploader = require("../middlewares/cloudinary.config");
 
 // Our routes go here
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
-});
-
 router.post("/signup", fileUploader.single("imageUrl"), (req, res, next) => {
   const { username, email, password, passwordCheck } = req.body;
   const profilePic = req.file?.path;

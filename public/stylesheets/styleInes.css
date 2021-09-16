@@ -1,0 +1,73 @@
+/* Modal buttons and body */
+
+.btn-close-modal {
+  background-color: #362f0c;
+  border: #362f0c;
+  transition: ease-in-out;
+}
+
+.btn-submit-modal {
+  background-color: #eacc38;
+  border: #eacc38;
+  color: black;
+}
+
+.btn-close-modal:hover {
+  background-color: #272209;
+  border: #272209;
+}
+
+.btn-submit-modal:hover {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+.modal-header {
+  background-color: #72631a;
+}
+
+.modal-title {
+  color: white;
+}
+
+.btn-close {
+  background-color: white;
+  opacity: 1;
+}
+
+.required-info {
+  font-size: x-small;
+  color: gray;
+}
+
+/* Auth buttons */
+
+#login-btn {
+  background-color: #eacc38;
+  border: none;
+  border-radius: 16px;
+  width: 105px;
+  height: 38px;
+  font-size: 1.2rem;
+  transition: ease-in-out;
+}
+
+#login-btn:hover {
+  border: white solid 3px;
+}
+
+#signup-btn {
+  background-color: #191505;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  width: 160px;
+  height: 50px;
+  font-size: 1.3rem;
+  transition: ease-in-out;
+}
+
+#signup-btn:hover {
+  border: white solid 3px;
+}

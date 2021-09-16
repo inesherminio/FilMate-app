@@ -2,9 +2,10 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const Movie = require("../models/Movie.model");
 const Event = require("../models/Event.model");
+const { isLoggedIn } = require("../middlewares/auth.config");
 
 //our routes
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
   Movie.find({ user: req.session.loggedInUser._id })
     .then((userMovies) => {
@@ -36,7 +37,7 @@ router.get("/", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/create", (req, res, next) => {
+router.post("/create", isLoggedIn, (req, res, next) => {
   console.log(req.body);
   const { name, movieRelatedTo, date, description, host, link } = req.body;
   Event.create({ name, movieRelatedTo, date, description, host, link })

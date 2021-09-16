@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { default: axios } = require("axios");
-const { connection } = require("mongoose");
+const axios = require("axios");
 const { isLoggedIn } = require("../middlewares/auth.config");
 const Connection = require("../models/Connection.model");
 const Movie = require("../models/Movie.model");
@@ -27,7 +26,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/search", (req, res, next) => {
+router.get("/search", isLoggedIn, (req, res, next) => {
   console.log("filter choices", req.query);
   const { genre, decision, rank } = req.query;
   let query = { user: req.session.loggedInUser._id };
@@ -67,7 +66,7 @@ router.post("/", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   let movieFromDb;
   let movieFromApi;
@@ -108,7 +107,7 @@ router.get("/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/:id", (req, res, next) => {
+router.post("/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   const { user } = req.body;
   let connections;

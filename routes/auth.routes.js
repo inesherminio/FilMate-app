@@ -10,7 +10,7 @@ router.post("/signup", fileUploader.single("imageUrl"), (req, res, next) => {
 
   //* Check if user filled all required info
   if (!username || !email || !password || !passwordCheck) {
-    res.render("auth/signup", { err: "Please fill in all of the information" });
+    res.render("index", { signUpErr: "Please fill in all of the information" });
     return;
   }
 
@@ -18,21 +18,22 @@ router.post("/signup", fileUploader.single("imageUrl"), (req, res, next) => {
   const emailRegex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!emailRegex.test(email)) {
-    res.render("auth/signup", { err: "Please present a valid email" });
+    res.render("index", { signUpErr: "Please present a valid email" });
     return;
   }
 
   //* Check if password and passwordCheck are the same
   if (password !== passwordCheck) {
-    res.render("auth/signup", { err: "Passwords do not match" });
+    res.render("index", { signUpErr: "Passwords do not match" });
     return;
   }
 
   //* Check if password meets strength requirements
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   if (!passwordRegex.test(password)) {
-    res.render("auth/signup", {
-      err: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 8 digits",
+    res.render("index", {
+      signUpErr:
+        "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 8 digits",
     });
     return;
   }
@@ -41,8 +42,8 @@ router.post("/signup", fileUploader.single("imageUrl"), (req, res, next) => {
   User.findOne({ $or: [{ username }, { email }] })
     .then((user) => {
       if (user) {
-        res.render("auth/signup", {
-          err: "That user already exists",
+        res.render("index", {
+          signUpErr: "That user already exists",
         });
       } else {
         //* Encrypt password
@@ -68,7 +69,7 @@ router.post("/login", (req, res, next) => {
   //* Check if user filled all required info
   if (!email || !password) {
     res.render("index", {
-      err: "Please fill in all of the information",
+      logInErr: "Please fill in all of the information",
     });
     return;
   }
@@ -85,12 +86,12 @@ router.post("/login", (req, res, next) => {
           res.redirect("/profile");
         } else {
           res.render("index", {
-            err: "Wrong password",
+            logInErr: "Wrong password",
           });
         }
       } else {
         res.render("index", {
-          err: "The user does not yet exist",
+          logInErr: "The user does not yet exist",
         });
       }
     })

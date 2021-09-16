@@ -1,18 +1,7 @@
 <h1>These are your movies!</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Title</th>
-      <th scope="col">Genre 
-      </th>
-      <th scope="col">Your Choice</th>
-      <th scope="col">Rank or Alternative Activity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <form action="/movie-list/search" method="GET">
+<form action="/movie-list/search" method="GET">
+    <div class="mb-3">
       <div>
         <input type="checkbox" name="genre" value="Action">
         <label for="Action">Action</label>
@@ -77,7 +66,6 @@
 
         <input type="checkbox" name="decision" value="Chill">
         <label for="Chill">Chill</label>
-        
       </div>
 
       <div>
@@ -99,11 +87,24 @@
         <input type="checkbox" name="rank" value="Haven't watched it yet">
         <label for="Haven't watched it yet">Haven't watched it yet</label>
       </div>
-      <button type="submit">submit</button>
-      
-
+      </div>
+      <button id="filter-btn" type="submit">Filter</button>
     </form>
-    {{#each movies}}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Title</th>
+      <th scope="col">Genre 
+      </th>
+      <th scope="col">Your Choice</th>
+      <th scope="col">Rank or Alternative Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+        {{#each movies}}
       <tr>
         <th scope="row"><img
             src="{{this.image}}"
@@ -122,7 +123,7 @@
             <form action="/movie-list" method="POST">
               <input type="hidden" name="movieId" value="{{this._id}}" />
               <select
-                class="select-rank"
+                class="select-rank form-select"
                 id="edit-rank-{{this._id}}"
                 name="rank"
               >
@@ -154,7 +155,7 @@
             <form action="/movie-list" method="POST">
               <input type="hidden" name="movieId" value="{{this._id}}" />
               <select
-                class="select-alternative"
+                class="select-alternative form-select"
                 id="edit-alternative-{{this._id}}"
                 name="alternative"
               >

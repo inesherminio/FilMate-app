@@ -6,21 +6,32 @@
   transition: ease-in-out;
 }
 
+.btn-close-modal:hover {
+  background-color: #272209;
+  border: #272209;
+}
+
 .btn-submit-modal {
   background-color: #eacc38;
   border: #eacc38;
   color: black;
-}
-
-.btn-close-modal:hover {
-  background-color: #272209;
-  border: #272209;
+  outline-color: none;
 }
 
 .btn-submit-modal:hover {
   background-color: #ddc135;
   border: #ddc135;
   color: black;
+}
+
+.btn:active {
+  outline-color: none !important;
+  box-shadow: none !important;
+}
+
+.btn:focus {
+  outline-color: none !important;
+  box-shadow: none !important;
 }
 
 .modal-header {
@@ -70,4 +81,75 @@
 
 #signup-btn:hover {
   border: white solid 3px;
+}
+
+#logOut-btn {
+  background-color: #eacc38;
+  border: none;
+  border-radius: 16px;
+  width: 105px;
+  height: 38px;
+  font-size: 1.2rem;
+  transition: ease-in-out;
+}
+
+#logOut-btn:hover {
+  border: white solid 3px;
+}
+
+/* Forms */
+
+.form-control:focus {
+  border-color: none;
+  box-shadow: none;
+  border-color: #72631a;
+}
+
+.form-select:focus {
+  border-color: none;
+  box-shadow: none;
+  border-color: #72631a;
+}
+
+/* Movie list forms */
+
+#filter-btn {
+  background-color: #72631a;
+  border: none;
+  color: white;
+  border-radius: 16px;
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
+  transition: ease-in-out;
+}
+
+#filter-btn:hover {
+  border: white solid 2px;
+}
+
+/* Random movie forms */
+
+#chill-btn {
+  background-color: #362f0c;
+  border: #362f0c;
+  transition: ease-in-out;
+}
+
+#chill-btn:hover {
+  background-color: #272209;
+  border: #272209;
+}
+
+#watch-btn {
+  background-color: #eacc38;
+  border: #eacc38;
+  color: black;
+  outline-color: none;
+}
+
+#watch-btn:hover {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
 }

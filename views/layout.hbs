@@ -34,7 +34,7 @@
         />
         <h4>{{loggedInUser.username}}</h4>
         <form action="/logout" method="POST">
-          <button type="submit">Log Out</button>
+          <button id="logout-btn" type="submit">Log Out</button>
         </form>
       </nav>
     {{else}}
@@ -50,7 +50,7 @@
           data-bs-toggle="modal"
           data-bs-target="#logInModal"
         >Log In</button>
-        {{err}}
+        {{logInErr}}
       </nav>
     {{/if}}
 

@@ -29,23 +29,34 @@
 <div>
   <h2>Who else likes this movie?</h2>
   <ul>
-    {{#each movieFromDb}}
-      <li>
-        <img
-          src="{{this.user.profilePic}}"
-          alt="{{this.user.username}}'s profile picture"
-          width="50"
-        />
-        {{this.user.username}}
-        <form action="/movie-list/{{this.movieId}}" method="POST">
-          <input type="hidden" name="user" value="{{this.user._id}}" />
-          <button
-            type="submit"
-            class="follow-btn"
-            id="{{this.user._id}}"
-          >Follow</button>
-        </form>
-      </li>
+    {{#each followedUsers}}
+      {{#if isFriend}}
+        <li>
+          <img
+            src="{{this.profilePic}}"
+            alt="{{this.username}}'s profile picture"
+            width="50"
+          />
+          {{this.username}}
+          {{#if isFollowed}}
+            <button
+              type="button"
+              class="follow-btn"
+              id="{{this._id}}"
+              disabled
+            >Following</button>
+          {{else}}
+            <form action="/movie-list/{{../movieFromApi.id}}" method="POST">
+              <input type="hidden" name="user" value="{{this._id}}" />
+              <button
+                type="submit"
+                class="follow-btn"
+                id="{{this._id}}"
+              >Follow</button>
+            </form>
+          {{/if}}
+        </li>
+      {{/if}}
     {{/each}}
   </ul>
 </div>

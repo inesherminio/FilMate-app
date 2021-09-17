@@ -93,6 +93,10 @@
   border: white solid 3px;
 }
 
+#log-in-error {
+  color: white;
+}
+
 /* Forms */
 
 .form-control:focus {

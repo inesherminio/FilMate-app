@@ -1,78 +1,87 @@
-<div id="profile-movies">
-  <h3 class="profile-div-titles">Your latest random movies</h3>
-  <div class="profile-container">
-{{#each movies}}
-<div class="card profile-movie-card" style="width: 12rem;">
-  <img src="{{this.image}}" class="card-img-top" width="50" alt="{{this.title}} poster">
-  <div class="card-body">
-    <h5 class="card-title">{{this.title}}</h5>
+<div id="profile">
+  <div id="profile-left-wing">
+    <div class="profile-container">
+      <h3 class="profile-div-titles">Your latest random movies</h3>
+      <div id="profile-movies">
+        {{#each movies}}
+          <div class="card profile-movie-card" style="width: 9rem;">
+            <img
+              src="{{this.image}}"
+              class="card-img-top"
+              width="50"
+              alt="{{this.title}} poster"
+            />
+            <div class="card-body">
+              <h6 class="card-title">{{this.title}}</h6>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <h5 class="profile-div-links"><a href="/movie-list">See your complete list
+          of movies</a></h5>
+    </div>
+
+    <div class="profile-container">
+      <h3 class="profile-div-titles">Your interests</h3>
+      <div id="profile-interests">
+        <ul class="list-group list-group-flush">
+          {{#each interest}}
+            <li class="list-group-item">
+              <h6>{{this.activity}}</h6>
+              <form action="/profile/delete" method="POST" id="delete-form">
+                <input type="hidden" name="activity" value="{{this._id}}" />
+                <button
+                  type="submit"
+                  class="btn btn-secondary delete-btn"
+                >Delete</button>
+              </form>
+            </li>
+          {{/each}}
+          <li class="list-group-item">
+            <form
+              action="/profile/create"
+              method="POST"
+              id="activity-form"
+              class="mb-3"
+            >
+              <input
+                type="text"
+                id="profile-interests-form"
+                class="form-control"
+                name="activity"
+                placeholder="Add another interest here"
+              />
+              <button type="submit" class="btn btn-secondary add-btn">Add
+                interest</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="profile-right-wing">
+    <h3 class="profile-div-titles">Users you follow</h3>
+    <div id="profile-follows">
+      <ul class="list-group list-group-flush">
+        {{#each connections}}
+          <li class="list-group-item connections-list">
+            <div>
+              <img
+                src="{{this.friend.profilePic}}"
+                alt="{{this.friend.username}}'s profile picture"
+                width="50"
+              />
+              <h6>{{this.friend.username}}</h6>
+            </div>
+            <form action="/profile/unfollow" method="POST">
+              <input type="hidden" name="connection" value="{{this._id}}" />
+              <button type="submit" class="btn btn-secondary delete-btn">
+                Unfollow
+              </button>
+            </form>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>
-{{/each}}
-</div>
-  <h6 class="profile-div-links"><a href="/movie-list">See the complete list</a></h3>
-</div>
-
-<div id="profile-interests">
-
-
-</div>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Your interests</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each interest}}
-      <tr>
-        <td>{{this.activity}}</td>
-        <td>
-          <form action="/profile/delete" method="POST" id="delete-form">
-          <input type="hidden" name="activity" value="{{this._id}}">
-          <button type="submit"  class="btn btn-secondary" >Delete</button>
-          </form>
-          </td> 
-    {{/each}}
-    <br>
-    <tr>
-      <form action="/profile/create" method="POST" id="activity-form">
-        <label for="activity">Add your interests here</label>
-        <input type="text" name="activity" ></input>
-
-        <button type="submit">submit</button>
-      </form>
-  </tbody>
-</table>
-
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Your friends</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each connections}}
-      <tr>
-        <td>
-          <img
-          src="{{this.friend.profilePic}}"
-          alt="{{this.friend.username}}'s profile picture"
-          width="50"
-        />
-          {{this.friend.username}}
-          <form action="/profile/unfollow" method="POST">
-          <input type="hidden" name="connection" value="{{this._id}}">
-          <button type="submit">
-            Unfollow
-          </button>
-          </form>
-          </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>

@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: #f5f5f5;
 }
 
 /* Modal buttons and body */
@@ -187,16 +187,28 @@ body {
 
 /* Profile */
 
-#profile-movies {
-  width: 80%;
+#profile {
+  width: 95%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#profile-left-wing {
+  flex-grow: 2;
+  margin-bottom: 30px;
+}
+
+.profile-container {
+  width: 90%;
   margin: 0 auto;
   border: 1px solid rgb(228, 227, 227);
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
   background-color: white;
+  margin-top: 30px;
 }
 
-.profile-container {
+#profile-movies {
   display: flex;
   justify-content: space-evenly;
 }
@@ -220,4 +232,111 @@ body {
 
 .profile-div-links a:hover {
   background-color: #eacc38;
+}
+
+#profile-interests {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+#profile-interests ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#profile-interests ul li h6 {
+  margin: 0;
+}
+
+#profile-interests ul li form {
+  margin: 0;
+}
+
+#profile-interests-form {
+  width: 300px;
+}
+
+#activity-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.delete-btn {
+  background-color: #362f0c;
+  border: #362f0c;
+  transition: ease-in-out;
+}
+
+.delete-btn:hover {
+  background-color: #272209;
+  border: #272209;
+}
+
+.delete-btn:active {
+  background-color: #272209;
+  border: #272209;
+}
+
+.delete-btn:focus {
+  background-color: #272209;
+  border: #272209;
+}
+
+.add-btn {
+  background-color: #eacc38;
+  border: #eacc38;
+  color: black;
+  outline-color: none;
+}
+
+.add-btn:hover {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+.add-btn:active {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+.add-btn:focus {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+#profile-right-wing {
+  width: 20%;
+  margin: 0 auto;
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
+  background-color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.connections-list {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connections-list form {
+  margin: 0;
+}
+
+.connections-list img {
+  width: 30px;
+}
+
+.connections-list h6 {
+  display: inline;
 }

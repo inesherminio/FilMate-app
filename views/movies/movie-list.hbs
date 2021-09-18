@@ -6,6 +6,7 @@
     <form action="/movie-list/search" method="GET">
     <div class="mb-3">
       <div class="filter-div">
+        <div>
           <input type="checkbox" name="genre" value="Action">
           <label for="Action">Action</label>
 
@@ -63,35 +64,36 @@
           <input type="checkbox" name="genre" value="Western">
           <label for="Western">Western</label>
 
-        <div>
-          <input type="checkbox" name="decision" value="Watch">
-          <label for="Watch">Watch</label>
+          <div>
+            <input type="checkbox" name="decision" value="Watch">
+            <label for="Watch">Watch</label>
 
-          <input type="checkbox" name="decision" value="Chill">
-          <label for="Chill">Chill</label>
-        </div>
+            <input type="checkbox" name="decision" value="Chill">
+            <label for="Chill">Chill</label>
+          </div>
+    
+          <div>
+            <input type="checkbox" name="rank" value="1 Star">
+            <label for="1 Star">1 Star</label>
 
-        <div>
-          <input type="checkbox" name="rank" value="1 Star">
-          <label for="1 Star">1 Star</label>
+            <input type="checkbox" name="rank" value="2 Stars">
+            <label for="2 Stars">2 Stars</label>
 
-          <input type="checkbox" name="rank" value="2 Stars">
-          <label for="2 Stars">2 Stars</label>
+            <input type="checkbox" name="rank" value="3 Stars">
+            <label for="3 Stars">3 Stars</label>
 
-          <input type="checkbox" name="rank" value="3 Stars">
-          <label for="3 Stars">3 Stars</label>
+            <input type="checkbox" name="rank" value="4 Stars">
+            <label for="4 Stars">4 Stars</label>
 
-          <input type="checkbox" name="rank" value="4 Stars">
-          <label for="4 Stars">4 Stars</label>
-
-          <input type="checkbox" name="rank" value="5 Stars">
-          <label for="5 Stars">5 Stars</label>
-          
-          <input type="checkbox" name="rank" value="Haven't watched it yet">
-          <label for="Haven't watched it yet">Haven't watched it yet</label>
-        </div>
+            <input type="checkbox" name="rank" value="5 Stars">
+            <label for="5 Stars">5 Stars</label>
+            
+            <input type="checkbox" name="rank" value="Haven't watched it yet">
+            <label for="Haven't watched it yet">Haven't watched it yet</label>
+          </div>
       
-        <button id="filter-btn" type="submit">Filter</button>
+          <button id="filter-btn" type="submit">Filter</button>
+        </div>
        </div> 
     </form>
 

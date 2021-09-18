@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100%;
 }
 
 a {
@@ -36,10 +37,10 @@ footer {
   display: flex;
   align-items: flex-end;
   background-color: #191505;
-  position: relative;
   padding-top: 7px;
   width: 100%;
   justify-content: flex-end;
+  flex-flow: row wrap;
 }
 
 /*TMDB LOGO*/
@@ -103,26 +104,37 @@ a {
   color: white;
 }
 
+.movie-page-title {
+  background-color: #eacc38;
+  width: 30%;
+  border-radius: 8px;
+}
+
 .movie-list-body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #eacc38;
+  background-color: rgb(228, 227, 227);
   width: 100%;
 }
 
 .movie-list-content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   max-width: 70%;
-  height: 50%;
   background-color: white;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 1px solid rgb(228, 227, 227);
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
-  background-color: rgb(238, 238, 238);
+}
+
+.filter-div {
+  padding-left: 10px;
+  max-width: 70%;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
+  background-color: rgb(228, 227, 227);
+  margin-left: 5px;
 }

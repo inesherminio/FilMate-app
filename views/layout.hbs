@@ -17,22 +17,26 @@
   <body>
 
     {{#if isLoggedIn}}
-      <nav>
+      <nav class="nav-2">
         <a href="/"><img
             src="/images/filmate-logo.png"
             alt="FilMate logo"
             width="100"
           /></a>
-        <a href="/profile">Profile</a>
-        <a href="/movie-list">Movies</a>
-        <a href="/random-movie">Random Movie</a>
-        <a href="/events">Events</a>
-        <img
-          src="{{loggedInUser.profilePic}}"
-          alt="User's profile picture"
-          width="50"
-        />
-        <h4>{{loggedInUser.username}}</h4>
+        <div class="nav-links">
+          <a href="/profile">Profile</a>
+          <a href="/movie-list">Movies</a>
+          <a href="/random-movie">Random Movie</a>
+          <a href="/events">Events</a>
+        </div>
+        <div class="nav-user-info">
+          <img
+            src="{{loggedInUser.profilePic}}"
+            alt="User's profile picture"
+            width="50"
+          />
+          <h4>{{loggedInUser.username}}</h4>
+        </div>
         <form action="/logout" method="POST">
           <button id="logout-btn" type="submit">Log Out</button>
         </form>
@@ -44,13 +48,15 @@
             alt="FilMate logo"
             width="100"
           /></a>
-        <button
-          type="button"
-          id="login-btn"
-          data-bs-toggle="modal"
-          data-bs-target="#logInModal"
-        >Log In</button>
-        <p id="log-in-error">{{logInErr}}</p>
+        <div>
+          <button
+            type="button"
+            id="login-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#logInModal"
+          >Log In</button>
+          <p id="log-in-error">{{logInErr}}</p>
+        </div>
       </nav>
     {{/if}}
 

@@ -1,94 +1,98 @@
-<h1>These are your movies!</h1>
-
-<form action="/movie-list/search" method="GET">
+<div class="movie-list-body">
+  <div class="movie-list-content">
+    <div class="movie-page-title">
+      <h1>Your movies!</h1>
+    </div>
+    <form action="/movie-list/search" method="GET">
     <div class="mb-3">
-      <div>
-        <input type="checkbox" name="genre" value="Action">
-        <label for="Action">Action</label>
+      <div class="filter-div">
+          <input type="checkbox" name="genre" value="Action">
+          <label for="Action">Action</label>
 
-        <input type="checkbox" name="genre" value="Adventure">
-        <label for="Adventure">Adventure</label>
+          <input type="checkbox" name="genre" value="Adventure">
+          <label for="Adventure">Adventure</label>
 
-        <input type="checkbox" name="genre" value="Animation">
-        <label for="Animation">Animation</label>
+          <input type="checkbox" name="genre" value="Animation">
+          <label for="Animation">Animation</label>
 
-        <input type="checkbox" name="genre" value="Comedy">
-        <label for="Comedy">Comedy</label>
+          <input type="checkbox" name="genre" value="Comedy">
+          <label for="Comedy">Comedy</label>
 
-        <input type="checkbox" name="genre" value="Crime">
-        <label for="Crime">Crime</label>
+          <input type="checkbox" name="genre" value="Crime">
+          <label for="Crime">Crime</label>
         
-        <input type="checkbox" name="genre" value="Documentary">
-        <label for="Documentary">Documentary</label>
+          <input type="checkbox" name="genre" value="Documentary">
+          <label for="Documentary">Documentary</label>
         
-        <input type="checkbox" name="genre" value="Drama">
-        <label for="Drama">Drama</label>
+          <input type="checkbox" name="genre" value="Drama">
+          <label for="Drama">Drama</label>
         
-        <input type="checkbox" name="genre" value="Family">
-        <label for="Family">Family</label>
+          <input type="checkbox" name="genre" value="Family">
+          <label for="Family">Family</label>
         
-        <input type="checkbox" name="genre" value="Fantasy">
-        <label for="Fantasy">Fantasy</label>
+          <input type="checkbox" name="genre" value="Fantasy">
+          <label for="Fantasy">Fantasy</label>
 
-        <input type="checkbox" name="genre" value="History">
-        <label for="History">History</label>
-        
-        <input type="checkbox" name="genre" value="Horror">
-        <label for="Horror">Horror</label>
-        
-        <input type="checkbox" name="genre" value="Music">
-        <label for="Music">Music</label>
-        
-        <input type="checkbox" name="genre" value="Mystery">
-        <label for="Mystery">Mystery</label>
-        
-        <input type="checkbox" name="genre" value="Romance">
-        <label for="Romance">Romance</label>
-        
-        <input type="checkbox" name="genre" value="Science Fiction">
-        <label for="Science Fiction">Science Fiction</label>
-        
-        <input type="checkbox" name="genre" value="TV Movie">
-        <label for="TV Movie">TV Movie</label>
-        
-        <input type="checkbox" name="genre" value="Thriller">
-        <label for="Thriller">Thriller</label>
-        
-        <input type="checkbox" name="genre" value="War">
-        <label for="War">War</label>
-        
-        <input type="checkbox" name="genre" value="Western">
-        <label for="Western">Western</label>
+          <input type="checkbox" name="genre" value="History">
+          <label for="History">History</label>
+          
+          <input type="checkbox" name="genre" value="Horror">
+          <label for="Horror">Horror</label>
+          
+          <input type="checkbox" name="genre" value="Music">
+          <label for="Music">Music</label>
+          
+          <input type="checkbox" name="genre" value="Mystery">
+          <label for="Mystery">Mystery</label>
+          
+          <input type="checkbox" name="genre" value="Romance">
+          <label for="Romance">Romance</label>
+          
+          <input type="checkbox" name="genre" value="Science Fiction">
+          <label for="Science Fiction">Science Fiction</label>
+          
+          <input type="checkbox" name="genre" value="TV Movie">
+          <label for="TV Movie">TV Movie</label>
+          
+          <input type="checkbox" name="genre" value="Thriller">
+          <label for="Thriller">Thriller</label>
+          
+          <input type="checkbox" name="genre" value="War">
+          <label for="War">War</label>
+          
+          <input type="checkbox" name="genre" value="Western">
+          <label for="Western">Western</label>
 
-      <div>
-        <input type="checkbox" name="decision" value="Watch">
-        <label for="Watch">Watch</label>
+        <div>
+          <input type="checkbox" name="decision" value="Watch">
+          <label for="Watch">Watch</label>
 
-        <input type="checkbox" name="decision" value="Chill">
-        <label for="Chill">Chill</label>
-      </div>
+          <input type="checkbox" name="decision" value="Chill">
+          <label for="Chill">Chill</label>
+        </div>
 
-      <div>
-        <input type="checkbox" name="rank" value="1 Star">
-        <label for="1 Star">1 Star</label>
+        <div>
+          <input type="checkbox" name="rank" value="1 Star">
+          <label for="1 Star">1 Star</label>
 
-        <input type="checkbox" name="rank" value="2 Stars">
-        <label for="2 Stars">2 Stars</label>
+          <input type="checkbox" name="rank" value="2 Stars">
+          <label for="2 Stars">2 Stars</label>
 
-        <input type="checkbox" name="rank" value="3 Stars">
-        <label for="3 Stars">3 Stars</label>
+          <input type="checkbox" name="rank" value="3 Stars">
+          <label for="3 Stars">3 Stars</label>
 
-        <input type="checkbox" name="rank" value="4 Stars">
-        <label for="4 Stars">4 Stars</label>
+          <input type="checkbox" name="rank" value="4 Stars">
+          <label for="4 Stars">4 Stars</label>
 
-        <input type="checkbox" name="rank" value="5 Stars">
-        <label for="5 Stars">5 Stars</label>
-        
-        <input type="checkbox" name="rank" value="Haven't watched it yet">
-        <label for="Haven't watched it yet">Haven't watched it yet</label>
-      </div>
-      </div>
-      <button id="filter-btn" type="submit">Filter</button>
+          <input type="checkbox" name="rank" value="5 Stars">
+          <label for="5 Stars">5 Stars</label>
+          
+          <input type="checkbox" name="rank" value="Haven't watched it yet">
+          <label for="Haven't watched it yet">Haven't watched it yet</label>
+        </div>
+      
+        <button id="filter-btn" type="submit">Filter</button>
+       </div> 
     </form>
 
 
@@ -188,3 +192,5 @@
     {{/each}}
   </tbody>
 </table>
+</div>
+</div>

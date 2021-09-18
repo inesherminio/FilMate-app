@@ -1,73 +1,35 @@
-<h1>Start choosing which movies you want to watch!</h1>
-
-<!-- Nav tabs -->
-<div class="card text-center w-50">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link active"
-          id="home-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#home"
-          type="button"
-          role="tab"
-          aria-controls="home"
-          aria-selected="true"
-        >Movie Cover</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link"
-          id="profile-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#profile"
-          type="button"
-          role="tab"
-          aria-controls="profile"
-          aria-selected="false"
-        >Details</button>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content card-body">
-      <div
-        class="tab-pane active"
-        id="home"
-        role="tabpanel"
-        aria-labelledby="home-tab"
-      >
+<div id="random-movie-view">
+  <h3 id="random-movie-title">Start choosing which movies you want to watch!</h3>
+  <div id="random-movie-container">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
       {{#if movie.poster_path}}
         <img
           src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"
           alt="{{movie.title}} poster picture"
+          width="300"
+          height="450"
         />
         {{/if}}
-      </div>
-      <div
-        class="tab-pane"
-        id="profile"
-        role="tabpanel"
-        aria-labelledby="profile-tab"
-      >
-        <h5 class="card-title">Title: {{movie.title}}</h5>
-        {{#if movie.overview}}
-        <p class="card-text">Overview: {{movie.overview}}</p>
-        {{/if}}
-        <p class="card-text">Genre:</p>
-        <ul>
-          {{#each movie.genre_names}}
-          <li>{{this}}</li>
-          {{/each}}
-        </ul>
+    </div>
+    <div class="flip-card-back">
+      <div class="card random-card">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+          <p class="card-text">{{movie.overview}} </p>
+          <ul class="list-group list-group-flush">
+            {{#each movie.genre_names}}
+            <li class="list-group-item">{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-    <!-- Post form -->
-<div class="btn-group" role="group" aria-label="Movie Decision">
+<div class="btn-group random-movie-form" role="group" aria-label="Movie Decision">
   <form action="/random-movie" method="POST" >
     <input type="hidden" name="title" value="{{movie.title}}"></input>
     <input type="hidden" name="image" value="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movie.poster_path}}"></input>
@@ -77,8 +39,11 @@
     <option value="{{this}}" selected></option>
       {{/each}} 
     </select>
-    <button type="submit" name="decision" value="Watch" id="watch-btn" class="btn btn-warning">Watch</button>
-    <button type="submit" name="decision" value="Chill" id="chill-btn" class="btn btn-secondary">Chill</button>
+    <div id="random-movie-decision-btns">
+    <button type="submit" name="decision" value="Watch" id="watch-btn" class="btn btn-warning btn-lg">Watch</button>
+    <button type="submit" name="decision" value="Chill" id="chill-btn" class="btn btn-secondary btn-lg">Chill</button>
+    </div>
   </form>
 </div>
-
+</div>
+</div>

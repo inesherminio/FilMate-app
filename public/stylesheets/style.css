@@ -17,7 +17,7 @@ h1 {
   display: flex;
   align-items: center;
   padding: 10px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .main-div {
@@ -28,6 +28,8 @@ h1 {
 }
 
 .homepage {
+  display: flex;
+  justify-content: center;
   background-color: #eacc38;
   color: black;
   height: 80.9%;
@@ -47,8 +49,12 @@ footer {
 
 /*TMDB LOGO*/
 .movie-database {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 .home-div {

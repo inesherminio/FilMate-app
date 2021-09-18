@@ -95,6 +95,7 @@
           <button id="filter-btn" type="submit">Filter</button>
         </div>
        </div> 
+      </div>
     </form>
 
 
@@ -103,14 +104,13 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
-      <th scope="col">Genre 
-      </th>
+      <th scope="col">Genre</th>
       <th scope="col">Your Choice</th>
       <th scope="col">Rank or Alternative Activity</th>
     </tr>
   </thead>
   <tbody>
-        {{#each movies}}
+    {{#each movies}}
       <tr>
         <th scope="row"><img
             src="{{this.image}}"

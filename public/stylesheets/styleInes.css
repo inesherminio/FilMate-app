@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(245, 245, 245);
+}
+
 /* Modal buttons and body */
 
 .btn-close-modal {
@@ -11,6 +15,16 @@
   border: #272209;
 }
 
+.btn-close-modal:active {
+  background-color: #272209;
+  border: #272209;
+}
+
+.btn-close-modal:focus {
+  background-color: #272209;
+  border: #272209;
+}
+
 .btn-submit-modal {
   background-color: #eacc38;
   border: #eacc38;
@@ -19,6 +33,18 @@
 }
 
 .btn-submit-modal:hover {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+.btn-submit-modal:active {
+  background-color: #ddc135;
+  border: #ddc135;
+  color: black;
+}
+
+.btn-submit-modal:focus {
   background-color: #ddc135;
   border: #ddc135;
   color: black;
@@ -97,6 +123,11 @@
   color: white;
 }
 
+#sign-up-error {
+  background-color: #eacc38;
+  width: max-content;
+}
+
 /* Forms */
 
 .form-control:focus {
@@ -152,4 +183,41 @@
   background-color: #ddc135;
   border: #ddc135;
   color: black;
+}
+
+/* Profile */
+
+#profile-movies {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
+  background-color: white;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-movie-card {
+  border: none;
+}
+
+.profile-div-titles {
+  margin: 20px;
+}
+
+.profile-div-links {
+  margin: 20px;
+}
+
+.profile-div-links a {
+  text-decoration: none;
+  color: black;
+}
+
+.profile-div-links a:hover {
+  background-color: #eacc38;
 }

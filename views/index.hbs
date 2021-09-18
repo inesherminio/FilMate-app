@@ -27,12 +27,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
       </div>
         <form action="/signup" method="POST" enctype="multipart/form-data">
       <div class="modal-body mb-3">
@@ -52,7 +46,7 @@
           <input class="form-control" type="file" name="imageUrl">
           <br>
           <p class="required-info">* Required information</p>
-          <p style="color: red;">{{err}}</p>
+          <p id="sign-up-error">{{signUpErr}}</p>
       </div>
       <div class="modal-footer">
         <button

@@ -1,27 +1,22 @@
-<h1>Here's your private profile</h1>
+<div id="profile-movies">
+  <h3 class="profile-div-titles">Your latest random movies</h3>
+  <div class="profile-container">
+{{#each movies}}
+<div class="card profile-movie-card" style="width: 12rem;">
+  <img src="{{this.image}}" class="card-img-top" width="50" alt="{{this.title}} poster">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+  </div>
+</div>
+{{/each}}
+</div>
+  <h6 class="profile-div-links"><a href="/movie-list">See the complete list</a></h3>
+</div>
 
-<!-- Modal -->
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Your Movies</th>
-      <th scope="col">Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each movies}}
-      <tr>
-        <th scope="row"><img
-            src="{{this.image}}"
-            alt="{{this.title}} poster"
-            width="100"
-          /></th>
-        <td>{{this.title}}</td>
-        <td>
-    {{/each}}
-  </tbody>
-</table>
+<div id="profile-interests">
 
+
+</div>
 
 
 <table class="table">

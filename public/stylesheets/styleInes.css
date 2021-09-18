@@ -35,11 +35,7 @@
 }
 
 .modal-header {
-  background-color: #72631a;
-}
-
-.modal-title {
-  color: white;
+  background-color: #eacc38;
 }
 
 .btn-close {
@@ -95,6 +91,10 @@
 
 #logOut-btn:hover {
   border: white solid 3px;
+}
+
+#log-in-error {
+  color: white;
 }
 
 /* Forms */

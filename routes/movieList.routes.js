@@ -70,6 +70,8 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   let movieFromDb;
   let movieFromApi;
+  let friendsArr = [];
+  let user;
   Movie.find({
     movieId: id,
     user: { $ne: req.session.loggedInUser._id },
@@ -77,7 +79,7 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
     .populate("user", "username profilePic")
     .then((movies) => {
       movieFromDb = movies;
-      //console.log("here are movies from db:", movies);
+      console.log("here are movies from db:", movies);
       return axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=609f1b0969bd3b2e770487ab8987193b&language=en-US`
       );
@@ -85,23 +87,38 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
     .then((movie) => {
       //console.log("here are movies from api:", movieFromApi);
       movieFromApi = movie;
-      return User.findById(
-        req.session.loggedInUser._id,
-        "_id username following"
-      ).populate({
+      return User.findById(req.session.loggedInUser._id).populate({
         path: "following",
+        select: "friend",
         populate: {
           path: "friend",
-          select: "username",
+          select: "_id username",
         },
       });
     })
-    .then((user) => {
+    .then((userVar) => {
       //console.log(user.following[0].friend);
+      user = userVar;
+      user.following.forEach((friend) => {
+        friendsArr.push(friend.friend.username);
+      });
+      return User.find({}, { username: 1, profilePic: 1 });
+    })
+    .then((allUsers) => {
+      //console.log(friendsArr);
+      const followedUsers = allUsers.map((user) => {
+        return {
+          ...JSON.parse(JSON.stringify(user)),
+          isFollowed: friendsArr.includes(user.username),
+          isFriend: user.username !== req.session.loggedInUser.username,
+        };
+      });
+      console.log(movieFromApi);
       res.render("movies/movie-detail", {
         movieFromDb,
         movieFromApi: movieFromApi.data,
         user: user.following,
+        followedUsers,
       });
     })
     .catch((err) => next(err));

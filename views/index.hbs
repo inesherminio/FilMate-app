@@ -1,18 +1,72 @@
 {{!-- Homepage --}}
 <div class="homepage">
-  <div class="main-div">
-    <div class="home-div">
-      <img src="/images/filmate-name.png" alt="FilMate extended logo" />
-      <div class="intro-div">
-        <h1>The ultimate social network for cinephiles. </h1>
-        <h2>FilMate suggests movies to watch and connects you with people who have the same movie
-        interests.</h2>
-        <form action="/signup" method="GET">
-          <button type="submit">Sign Up</button>
+  <div class="home-div">
+    <img src="/images/filmate-name.png" alt="FilMate extended logo" />
+    <div class="intro-div">
+      <h1>The ultimate social network for cinephiles. </h1>
+      <h2>FilMate suggests movies to watch and connects you with people who have the same movie
+      interests.</h2>
+        <button
+          type="button"
+          id="signup-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#signUpModal"
+        >Sign Up</button>
+    </div>
+  </div>
+
+  {{!-- Sign Up Modal --}}
+<div
+  class="modal fade"
+  id="signUpModal"
+  tabindex="-1"
+  aria-labelledby="signUpModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+      <div class="modal-body mb-3">
+          <label class="form-label" for="username">Username*</label>
+          <input class="form-control" type="text" name="username" placeholder="myUsername" />
+          <br />
+          <label class="form-label" for="email">Email*</label>
+          <input class="form-control" type="text" name="email" placeholder="name@example.com" />
+          <br />
+          <label class="form-label" for="password">Password*</label>
+          <input class="form-control" type="password" name="password" />
+          <br />
+          <label class="form-label" for="passwordCheck">Confirm password*</label>
+          <input class="form-control" type="password" name="passwordCheck" />
+          <br>
+          <label class="form-label" for="imageUrl">Profile Picture</label>
+          <input class="form-control" type="file" name="imageUrl">
+          <br>
+          <p class="required-info">* Required information</p>
+          <p style="color: red;">{{err}}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary btn-close-modal"
+          data-bs-dismiss="modal"
+        >Close</button>
+          <button type="submit" class="btn btn-primary btn-submit-modal">Sign Up</button>
         </form>
       </div>
     </div>
   </div>
+</div>
+
 {{!-- Log In Modal --}}
 <div
   class="modal fade"
@@ -25,12 +79,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="logInModalLabel">Log In</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
       </div class="mb-3">
         <form action="/login" method="POST">
       <div class="modal-body">

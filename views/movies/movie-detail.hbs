@@ -1,13 +1,16 @@
-<h1>More about {{movieFromApi.title}}...</h1>
-
-<div>
-  <h2>Movie Details</h2>
+<div id="movie-detail-view">
+<div id="movie-details-left-wing">
+  <h3 class="movie-titles">More about this movie</h3>
+  <div id="movie-details-left-wing-container">
+  <div id="movie-detail-img">
   {{#if movieFromApi.poster_path}}
     <img
       src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{movieFromApi.poster_path}}"
       alt="{{movieFromApi.title}}'s poster"
     />
   {{/if}}
+  </div>
+  <div id="movie-detail-details">
   <h3><strong>{{movieFromApi.title}}</strong></h3>
   {{#if movieFromApi.tagline}}
     <h5><strong>Tagline:</strong> {{movieFromApi.tagline}}</h5>
@@ -24,24 +27,29 @@
   {{#if movieFromApi.release_date}}
     <p><strong>Release date:</strong> {{movieFromApi.release_date}}</p>
   {{/if}}
+  </div>
+  </div>
 </div>
 
-<div>
-  <h2>Who else likes this movie?</h2>
-  <ul>
+<div id="movie-details-right-wing">
+  <h3 class="movie-titles">Who else likes this movie?</h3>
+  <div id="movie-details-connections">
+  <ul class="list-group list-group-flush">
     {{#each followedUsers}}
       {{#if isFriend}}
-        <li>
+        <li class="list-group-item list-of-users">
+          <div id="movie-details-users">
           <img
             src="{{this.profilePic}}"
             alt="{{this.username}}'s profile picture"
             width="50"
           />
           {{this.username}}
+          </div>
           {{#if isFollowed}}
             <button
               type="button"
-              class="follow-btn"
+              class="btn btn-secondary follow-btn"
               id="{{this._id}}"
               disabled
             >Following</button>
@@ -50,7 +58,7 @@
               <input type="hidden" name="user" value="{{this._id}}" />
               <button
                 type="submit"
-                class="follow-btn"
+                class="btn btn-secondary follow-btn"
                 id="{{this._id}}"
               >Follow</button>
             </form>
@@ -59,4 +67,6 @@
       {{/if}}
     {{/each}}
   </ul>
+  </div>
+</div>
 </div>

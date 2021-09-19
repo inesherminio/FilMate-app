@@ -17,44 +17,40 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="eventModalLabel">Host an event</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
       </div>
         <form action="/events/create" method="POST">
-      <div class="modal-body">
-          <label for="name">Name</label>
-          <input type="text" name="name" />
+      <div class="modal-body mb-3">
+          <label for="name" class="form-label">Name*</label>
+          <input type="text" class="form-control" name="name" />
           <br />
-          <label for="movieRelatedTo">Movie related</label>
-          <select name="movieRelatedTo" >
+          <label for="movieRelatedTo" class="form-label">Movie related*</label>
+          <select name="movieRelatedTo" class="form-select" >
               {{#each movies}}
               <option value="{{this._id}}">{{this.title}}</option>
               {{/each}}
           </select>
           <br>
-          <label for="date">Date</label>
-          <input type="datetime-local" name="date" />
+          <label for="date" class="form-label">Date*</label>
+          <input type="datetime-local" class="form-control" name="date" />
           <br />
-          <label for="description">Description</label>
-          <textarea name="description" cols="30" rows="10"></textarea>
+          <label for="description" class="form-label">Description*</label>
+          <textarea name="description" class="form-control" cols="30" rows="3"></textarea>
           <br />
           <input type="hidden" name="host" value="{{movies.0.user}}" />
-          <input type="hidden" name="atendees" value="{{movies.0.user}}" />
+          <input type="hidden" name="attendees" value="{{movies.0.user}}" />
           <br />
-          <label for="link">Link for the online event</label>
-          <input type="text" name="link" />
+          <label for="link" class="form-label">Link for the online event</label>
+          <input type="text" class="form-control" name="link" />
+          <br>
+          <p class="required-info">* Required information</p>
       </div>
       <div class="modal-footer">
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn btn-secondary btn-close-modal"
           data-bs-dismiss="modal"
         >Close</button>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary btn-submit-modal">Create</button>
         </form>
       </div>
     </div>
@@ -65,7 +61,7 @@
 <div id="events-container">
 {{#each events}}
 
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-3 event-cards" style="max-width: 400px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{{this.movieRelatedTo.image}}" class="img-fluid rounded-start" alt="{{this.movieRelatedTo.title}}'s poster">
@@ -73,15 +69,16 @@
     <div class="col-md-8">
       <div class="card-body">
         <h4 class="card-title">{{this.name}}</h4>
+        <p class="card-text">Hosted by {{this.host.username}}</p>
         <p class="card-text"><small class="text-muted">{{this.date}}</small></p>
         <p class="card-text">{{this.description}}</p>
         {{#if this.link}}
-        <p class="card-text event-link"><a href="#" class="card-link">Link to the event</a></p>
+        <p class="card-text "><a href="#" class="card-link event-link">Link to the event</a></p>
         {{/if}}
-        {{#ifEquals this.atendees.length 1}}
-        <p class="card-text event-atendees">{{this.atendees.length}} user is attending</p>
+        {{#ifEquals this.attendees.length 1}}
+        <p class="card-text event-atendees">{{this.attendees.length}} user is attending</p>
         {{else}}
-        <p class="card-text event-atendees">{{this.atendees.length}} users are attending</p>
+        <p class="card-text event-atendees">{{this.attendees.length}} users are attending</p>
         {{/ifEquals}}
         <form
               action="/events/attend"
@@ -89,6 +86,8 @@
               id="attend-event-form"
               class="mb-3"
             >
+            <input type="hidden" name="attendee" value="{{../loggedInUser._id}}">
+            <input type="hidden" name="eventId" value="{{this._id}}">
               <button type="submit" class="btn btn-secondary add-btn">Attend</button>
             </form>
       </div>

@@ -25,9 +25,13 @@ router.get("/", isLoggedIn, (req, res, next) => {
       user.following.forEach((friend) => {
         friendsArr.push(friend.friend);
       });
-      return Event.find({
-        $or: [{ host: user._id }, { host: { $in: friendsArr } }],
-      })
+      return Event.find(
+        {
+          $or: [{ host: user._id }, { host: { $in: friendsArr } }],
+        },
+        {},
+        { sort: "date" }
+      )
         .populate("host", "username profilePic")
         .populate("movieRelatedTo");
     })
@@ -39,8 +43,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 router.post("/create", isLoggedIn, (req, res, next) => {
   console.log(req.body);
-  const { name, movieRelatedTo, date, description, host, link, atendees } =
+  const { name, movieRelatedTo, date, description, host, link, attendees } =
     req.body;
+
+  //* Check if user filled all required info
+  if (!name || !movieRelatedTo || !date || !description || !host) {
+    res.redirect("/events");
+    return;
+  }
+
   Event.create({
     name,
     movieRelatedTo,
@@ -48,9 +59,29 @@ router.post("/create", isLoggedIn, (req, res, next) => {
     description,
     host,
     link,
-    atendees,
+    attendees,
   })
     .then((event) => {
+      res.redirect("/events");
+    })
+    .catch((err) => next(err));
+});
+
+router.post("/attend", isLoggedIn, (req, res, next) => {
+  const { attendee, eventId } = req.body;
+  let attendeesArr = [attendee];
+  Event.findById(eventId)
+    .then((event) => {
+      event.attendees.forEach((attendee) => {
+        attendeesArr.push(attendee);
+      });
+      return Event.findByIdAndUpdate(
+        eventId,
+        { attendees: attendeesArr },
+        { new: true }
+      );
+    })
+    .then((updatedEvent) => {
       res.redirect("/events");
     })
     .catch((err) => next(err));

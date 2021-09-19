@@ -4,7 +4,7 @@
     <div class="home-div">
       <img src="/images/filmate-name.png" alt="FilMate extended logo" />
       <div class="intro-div">
-        <h1>The ultimate social network for cinephiles. </h1>
+        <h1>The ultimate social network for cinephiles.</h1>
         <h2>FilMate suggests movies to watch and connects you with people who have the same movie
         interests.</h2>
           <button
@@ -16,7 +16,8 @@
       </div>
     </div>
   </div>
-  {{!-- Sign Up Modal --}}
+{{!-- Sign Up Modal --}}
+</div>
 <div
   class="modal fade"
   id="signUpModal"
@@ -74,22 +75,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="logInModalLabel">Log In</h5>
-      </div class="mb-3">
-        <form action="/login" method="POST">
-      <div class="modal-body">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-control" type="text" name="email" placeholder="name@example.com" />
-          <br />
-          <label class="form-label" for="password">Password</label>
-          <input class="form-control" type="password" name="password" />
       </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary btn-close-modal"
-          data-bs-dismiss="modal"
-        >Close</button>
-          <button type="submit" class="btn btn-primary btn-submit-modal">Log In</button>
+      <div class="mb-3">
+        <form action="/login" method="POST">
+          <div class="modal-body">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="text" name="email" placeholder="name@example.com" />
+            <br />
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary btn-close-modal"
+              data-bs-dismiss="modal"
+            >Close</button>
+            <button type="submit" class="btn btn-primary btn-submit-modal">Log In</button>
+          </div>
         </form>
       </div>
     </div>

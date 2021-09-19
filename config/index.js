@@ -43,7 +43,7 @@ module.exports = (app) => {
       secret: process.env.SESSION_SECRET,
       saveUninitialized: false,
       resave: false,
-      cookie: { maxAge: 60 * 60 * 24 * 7 },
+      cookie: { maxAge: 604800000 },
       store: MongoStore.create({
         mongoUrl: (MONGO_URI =
           process.env.MONGODB_URI || "mongodb://localhost/FilMate"),

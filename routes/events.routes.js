@@ -39,8 +39,17 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 router.post("/create", isLoggedIn, (req, res, next) => {
   console.log(req.body);
-  const { name, movieRelatedTo, date, description, host, link } = req.body;
-  Event.create({ name, movieRelatedTo, date, description, host, link })
+  const { name, movieRelatedTo, date, description, host, link, atendees } =
+    req.body;
+  Event.create({
+    name,
+    movieRelatedTo,
+    date,
+    description,
+    host,
+    link,
+    atendees,
+  })
     .then((event) => {
       res.redirect("/events");
     })

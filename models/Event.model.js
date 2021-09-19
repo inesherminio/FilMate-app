@@ -14,10 +14,12 @@ const eventSchema = new Schema({
     ref: "User",
     required: true,
   },
-  atendees: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  atendees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   link: String,
 });
 

@@ -113,11 +113,10 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
           isFriend: user.username !== req.session.loggedInUser.username,
         };
       });
-      console.log(movieFromApi);
       res.render("movies/movie-detail", {
         movieFromDb,
         movieFromApi: movieFromApi.data,
-        user: user.following,
+        user: user,
         followedUsers,
       });
     })

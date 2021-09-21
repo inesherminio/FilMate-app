@@ -10,58 +10,40 @@
           <div class="filter-type">
             <input type="checkbox" name="genre" value="Action">
             <label for="Action">Action</label>
-
             <input type="checkbox" name="genre" value="Adventure">
             <label for="Adventure">Adventure</label>
-
             <input type="checkbox" name="genre" value="Animation">
             <label for="Animation">Animation</label>
-
             <input type="checkbox" name="genre" value="Comedy">
             <label for="Comedy">Comedy</label>
-
             <input type="checkbox" name="genre" value="Crime">
             <label for="Crime">Crime</label>
-          
             <input type="checkbox" name="genre" value="Documentary">
             <label for="Documentary">Documentary</label>
-          
             <input type="checkbox" name="genre" value="Drama">
             <label for="Drama">Drama</label>
-          
             <input type="checkbox" name="genre" value="Family">
             <label for="Family">Family</label>
-          
             <input type="checkbox" name="genre" value="Fantasy">
             <label for="Fantasy">Fantasy</label>
-
             <input type="checkbox" name="genre" value="History">
             <label for="History">History</label>
-            
             <input type="checkbox" name="genre" value="Horror">
             <label for="Horror">Horror</label>
-            
             <input type="checkbox" name="genre" value="Music">
             <label for="Music">Music</label>
-            
             <input type="checkbox" name="genre" value="Mystery">
             <label for="Mystery">Mystery</label>
-            
             <input type="checkbox" name="genre" value="Romance">
             <label for="Romance">Romance</label>
-            
             <input type="checkbox" name="genre" value="Science Fiction">
             <label for="Science Fiction">Science Fiction</label>
-            
             <input type="checkbox" name="genre" value="TV Movie">
             <label for="TV Movie">TV Movie</label>
-            
             <input type="checkbox" name="genre" value="Thriller">
             <label for="Thriller">Thriller</label>
-            
             <input type="checkbox" name="genre" value="War">
             <label for="War">War</label>
-            
             <input type="checkbox" name="genre" value="Western">
             <label for="Western">Western</label>
           </div>
@@ -69,7 +51,6 @@
           <div class="filter-type">
             <input type="checkbox" name="decision" value="Watch">
             <label for="Watch">Watch</label>
-
             <input type="checkbox" name="decision" value="Chill">
             <label for="Chill">Chill</label>
           </div>
@@ -77,19 +58,14 @@
           <div class="filter-type">
             <input type="checkbox" name="rank" value="1 Star">
             <label for="1 Star">1 Star</label>
-
             <input type="checkbox" name="rank" value="2 Stars">
             <label for="2 Stars">2 Stars</label>
-
             <input type="checkbox" name="rank" value="3 Stars">
             <label for="3 Stars">3 Stars</label>
-
             <input type="checkbox" name="rank" value="4 Stars">
             <label for="4 Stars">4 Stars</label>
-
             <input type="checkbox" name="rank" value="5 Stars">
             <label for="5 Stars">5 Stars</label>
-            
             <input type="checkbox" name="rank" value="Haven't watched it yet">
             <label for="Haven't watched it yet">Haven't watched it yet</label>
           </div>
@@ -100,15 +76,15 @@
       </div>
     </form>
 
-
-<table class="table">
+<div class="table-responsive">
+<table class="table align-middle">
   <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
       <th scope="col">Genre</th>
       <th scope="col">Your Choice</th>
-      <th scope="col">Rank or Alternative Activity</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -119,20 +95,37 @@
             alt="{{this.title}} poster"
             width="100"
           /></th>
-        <td>
-          {{this.title}}
-          <br />
+        <td class="movie-title">
+          <h5>{{this.title}}</h5>
           <a href="/movie-list/{{this.movieId}}">See More</a>
         </td>
-        <td>{{this.genre}}</td>
-        <td>{{this.decision}}</td>
+        <td style="word-wrap: break-word;min-width: 250px;max-width: 250px;">
+          <ul class="list-of-genres">
+            {{#each genre}}
+            {{#if @last}}
+              <li class="each-genres">{{this}}</li>
+              {{else}}
+              <li class="each-genres">{{this}} | </li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </td>
+        {{#ifEquals this.decision "Watch"}}
+        <td>
+          <p class="table-watch">{{this.decision}}</p>
+        </td>
+        {{else}}
+        <td>
+          <p class="table-chill">{{this.decision}}</p>
+        </td>
+        {{/ifEquals}}
         <td>
           {{#ifEquals this.decision "Watch"}}
             <form action="/movie-list" method="POST">
               <input type="hidden" name="movieId" value="{{this._id}}" />
               <select
                 class="select-rank form-select"
-                id="edit-rank-{{this._id}}"
+                class="edit-rank"
                 name="rank"
               >
                 <option value="{{this.rank}}" selected>{{this.rank}}</option>
@@ -143,20 +136,8 @@
                 <option value="4 Stars">4 Stars</option>
                 <option value="5 Stars">5 Stars</option>
               </select>
-              <img
-                src="images/edit-logo-yellow.jpg"
-                class="edit-rank"
-                id="{{this._id}}"
-                alt="Edit"
-                width="25"
-              />
-              <button type="submit">
-                <img
-                  src="images/save-logo-yellow.jpg"
-                  id="save-rank"
-                  alt="Save"
-                  width="25"
-                />
+              <button type="submit" class="btn btn-secondary update-btn">
+                Update
               </button>
             </form>
           {{else}}
@@ -164,7 +145,7 @@
               <input type="hidden" name="movieId" value="{{this._id}}" />
               <select
                 class="select-alternative form-select"
-                id="edit-alternative-{{this._id}}"
+                class="edit-alternative"
                 name="alternative"
               >
                 <option
@@ -174,20 +155,8 @@
                   <option value="{{this.activity}}">{{this.activity}}</option>
                 {{/each}}
               </select>
-              <img
-                src="images/edit-logo-yellow.jpg"
-                class="edit-alternative"
-                id="{{this._id}}"
-                alt="Edit"
-                width="25"
-              />
-              <button type="submit">
-                <img
-                  src="images/save-logo-yellow.jpg"
-                  id="save-alternative"
-                  alt="Save"
-                  width="25"
-                />
+              <button type="submit" class="btn btn-secondary update-btn">
+                Update
               </button>
             </form>
           {{/ifEquals}}
@@ -196,5 +165,6 @@
     {{/each}}
   </tbody>
 </table>
+</div>
 </div>
 </div>

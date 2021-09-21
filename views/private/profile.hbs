@@ -2,21 +2,25 @@
   <div id="profile-left-wing">
     <div class="profile-container">
       <h3 class="profile-div-titles">Your latest random movies</h3>
-      <div id="profile-movies">
-        {{#each movies}}
-          <div class="card profile-movie-card" style="width: 9rem;">
-            <img
-              src="{{this.image}}"
-              class="card-img-top"
-              width="50"
-              alt="{{this.title}} poster"
-            />
-            <div class="card-body">
-              <h6 class="card-title">{{this.title}}</h6>
+      {{#if movies}}
+        <div id="profile-movies">
+          {{#each movies}}
+            <div class="card profile-movie-card" style="width: 9rem;">
+              <img
+                src="{{this.image}}"
+                class="card-img-top"
+                width="50"
+                alt="{{this.title}} poster"
+              />
+              <div class="card-body">
+                <h6 class="card-title">{{this.title}}</h6>
+              </div>
             </div>
-          </div>
-        {{/each}}
-      </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h5 class="profile-no-elements">Start rating movies now!</h5>
+      {{/if}}
       <h5 class="profile-div-links"><a href="/movie-list">See your complete list
           of movies</a></h5>
     </div>
@@ -49,7 +53,7 @@
                 id="profile-interests-form"
                 class="form-control"
                 name="activity"
-                placeholder="Add another interest here"
+                placeholder="Add your interests here"
               />
               <button type="submit" class="btn btn-secondary add-btn">Add
                 interest</button>
@@ -57,6 +61,64 @@
           </li>
         </ul>
       </div>
+    </div>
+
+    <div class="profile-container">
+      <h3 class="profile-div-titles">Next events you're attending</h3>
+      {{#if events}}
+        <div id="profile-movies">
+          {{#each events}}
+            <div class="card mb-3 event-cards" style="max-width: 400px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img
+                    src="{{this.movieRelatedTo.image}}"
+                    class="img-fluid rounded-start"
+                    alt="{{this.movieRelatedTo.title}}'s poster"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h4 class="card-title">{{this.name}}</h4>
+                    <p class="card-text">Hosted by {{this.host.username}}</p>
+                    <p class="card-text"><small
+                        class="text-muted"
+                      >{{this.date}}</small></p>
+                    <p class="card-text">{{this.description}}</p>
+                    {{#if this.link}}
+                      <p class="card-text"><a
+                          href="#"
+                          class="card-link event-link"
+                        >Link to the event</a></p>
+                    {{/if}}
+                    {{#ifEquals this.attendees.length 1}}
+                      <p class="card-text event-atendees"><a
+                          href="#"
+                          class="card-link event-link"
+                          data-bs-toggle="modal"
+                          data-bs-dismiss="modal"
+                          data-bs-target="#attendeesModal"
+                        >{{this.attendees.length}} user is attending</a></p>
+                    {{else}}
+                      <p class="card-text event-atendees"><a
+                          href="#"
+                          class="card-link event-link"
+                          data-bs-toggle="modal"
+                          data-bs-dismiss="modal"
+                          data-bs-target="#attendeesModal"
+                        >{{this.attendees.length}} users are attending</a></p>
+                    {{/ifEquals}}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h5 class="profile-no-elements">You have no events on your calendar!</h5>
+      {{/if}}
+      <h5 class="profile-div-links"><a href="/events">See all available events</a></h5>
     </div>
   </div>
   <div id="profile-right-wing">

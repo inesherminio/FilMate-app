@@ -204,6 +204,13 @@ body {
   width: max-content;
 }
 
+.profile-no-elements {
+  margin: 40px;
+  background-color: #72631a;
+  color: white;
+  width: max-content;
+}
+
 .profile-div-links {
   margin: 20px;
 }

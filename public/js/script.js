@@ -16,10 +16,6 @@ editBtnArr.forEach((editBtn) => {
   });
 });*/
 
-let followBtnArr = document.getElementsByClassName("follow-btn");
-
-followBtnArr.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    console.log(event);
-  });
+$(document).ready(function () {
+  $("#example-popover").popover();
 });

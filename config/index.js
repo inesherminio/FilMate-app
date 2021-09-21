@@ -54,6 +54,6 @@ module.exports = (app) => {
 
   // Handles access to the favicon
   app.use(
-    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+    favicon(path.join(__dirname, "..", "public", "images", "faviconMovie.png"))
   );
 };

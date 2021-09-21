@@ -4,12 +4,14 @@ const Movie = require("../models/Movie.model");
 const User = require("../models/User.model");
 const Interest = require("../models/Interest.model");
 const Connection = require("../models/Connection.model");
+const Event = require("../models/Event.model");
 
 // our routes here
 router.get("/", isLoggedIn, (req, res, next) => {
   let movies;
   let user;
   let interest;
+  let connections;
   Movie.find(
     { user: req.session.loggedInUser._id },
     {},
@@ -29,12 +31,25 @@ router.get("/", isLoggedIn, (req, res, next) => {
       interest = userInterests;
       return Connection.find({ user: user._id }).populate("friend");
     })
-    .then((connections) => {
+    .then((connectionsFromDb) => {
+      connections = connectionsFromDb;
+      return Event.find(
+        {
+          attendees: { $in: user._id },
+        },
+        {},
+        { limit: 2, sort: "date" }
+      )
+        .populate("host", "username profilePic")
+        .populate("movieRelatedTo");
+    })
+    .then((events) => {
       res.render("private/profile", {
         movies,
         user,
         interest,
         connections,
+        events,
       });
     })
     .catch((err) => next(err));

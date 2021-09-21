@@ -57,7 +57,6 @@
   </div>
 </div>
 
-
 <div id="events-container">
 {{#each events}}
 
@@ -80,7 +79,19 @@
         {{else}}
         <p class="card-text event-atendees"><a href="#" class="card-link event-link" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#attendeesModal">{{this.attendees.length}} users are attending</a></p>
         {{/ifEquals}}
-        <form
+        {{#ifIn ../loggedInUser._id attendees}}
+          <form
+            action="/events/unattend"
+            method="POST"
+            id="unattend-event-form"
+            class="mb-3"
+            >
+            <input type="hidden" name="attendee" value="{{../loggedInUser._id}}">
+            <input type="hidden" name="eventId" value="{{this._id}}">
+              <button type="submit" class="btn btn-secondary delete-btn">Unattend</button>
+          </form>
+        {{else}}
+          <form
               action="/events/attend"
               method="POST"
               id="attend-event-form"
@@ -90,6 +101,7 @@
             <input type="hidden" name="eventId" value="{{this._id}}">
               <button type="submit" class="btn btn-secondary add-btn">Attend</button>
             </form>
+            {{/ifIn}}
       </div>
     </div>
   </div>
@@ -98,7 +110,7 @@
 </div>
 
 
-{{!-- Event attendees Modal --}}
+{{!-- {{!-- Event attendees Modal --}}
 <div
   class="modal fade"
   id="attendeesModal"
@@ -125,3 +137,5 @@
     </div>
   </div>
 </div>
+
+<button type="button" class="btn btn-lg btn-danger" id="example-popover" data-placement="top" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button> --}}

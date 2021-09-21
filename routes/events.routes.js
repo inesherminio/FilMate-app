@@ -27,7 +27,10 @@ router.get("/", isLoggedIn, (req, res, next) => {
       });
       return Event.find(
         {
-          $or: [{ host: user._id }, { host: { $in: friendsArr } }],
+          $and: [
+            { $or: [{ host: user._id }, { host: { $in: friendsArr } }] },
+            { date: { $gt: Date.now() } },
+          ],
         },
         {},
         { sort: "date" }
@@ -75,6 +78,29 @@ router.post("/attend", isLoggedIn, (req, res, next) => {
       event.attendees.forEach((attendee) => {
         attendeesArr.push(attendee);
       });
+      return Event.findByIdAndUpdate(
+        eventId,
+        { attendees: attendeesArr },
+        { new: true }
+      );
+    })
+    .then((updatedEvent) => {
+      res.redirect("/events");
+    })
+    .catch((err) => next(err));
+});
+
+router.post("/unattend", isLoggedIn, (req, res, next) => {
+  const { attendee, eventId } = req.body;
+  let attendeesArr = [];
+  Event.findById(eventId)
+    .then((event) => {
+      event.attendees.forEach((attendee) => {
+        if (attendee != req.session.loggedInUser._id) {
+          attendeesArr.push(attendee);
+        }
+      });
+      console.log("unattend", req.session.loggedInUser._id, attendeesArr);
       return Event.findByIdAndUpdate(
         eventId,
         { attendees: attendeesArr },

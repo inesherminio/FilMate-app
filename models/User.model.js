@@ -18,7 +18,7 @@ const userSchema = new Schema({
   },
   profilePic: {
     type: String,
-    default: "images/avatar.png",
+    default: "/images/avatar.png",
   },
   interests: [
     {

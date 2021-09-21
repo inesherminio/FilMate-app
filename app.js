@@ -17,6 +17,13 @@ hbs.registerHelper("ifEquals", function (arg1, arg2, options) {
   return arg1 === arg2 ? options.fn(this) : options.inverse(this);
 });
 
+hbs.registerHelper("ifIn", function (elem, list, options) {
+  if (list.indexOf(elem) > -1) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -28,6 +35,13 @@ const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
+
+app.use((req, res, next) => {
+  if (req.session.loggedInUser) {
+    req.app.locals.isLoggedIn = true;
+  }
+  next();
+});
 
 // 👇 Start handling routes here
 const index = require("./routes/index");

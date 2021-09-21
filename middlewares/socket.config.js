@@ -1,4 +1,5 @@
 const { Server } = require("socket.io");
+const Chat = require("../models/Chat.model");
 
 module.exports = {
   withSocketIO: (httpServer) => {

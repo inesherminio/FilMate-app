@@ -75,38 +75,10 @@
         <p class="card-text "><a href="#" class="card-link event-link">Link to the event</a></p>
         {{/if}}
         {{#ifEquals this.attendees.length 1}}
-        <p class="card-text event-atendees"><a href="#" class="card-link event-link" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#attendeesModal">{{this.attendees.length}} user is attending</a></p>
+        <p class="card-text event-atendees">{{this.attendees.length}} user is attending</p>
         {{else}}
-        <p class="card-text event-atendees"><a href="#" class="card-link event-link" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#attendeesModal">{{this.attendees.length}} users are attending</a></p>
+        <p class="card-text event-atendees">{{this.attendees.length}} users are attending</p>
         {{/ifEquals}}
-                {{!-- Event attendees Modal --}}
-<div
-  class="modal fade"
-  id="attendeesModal"
-  tabindex="-1"
-  aria-labelledby="attendeesModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="attendeesModalLabel">Users attending the event</h5>
-      </div>
-      <div class="modal-body mb-3">
-<ul>
-{{#each attendees}}
-<li>{{this}}</li>
-{{/each}}
-</ul>
-        <button
-          type="button"
-          class="btn btn-secondary btn-close-modal"
-          data-bs-dismiss="modal"
-        >Close</button>
-      </div>
-    </div>
-  </div>
-</div>
         {{#ifIn ../loggedInUser._id attendees}}
           <form
             action="/events/unattend"

@@ -595,7 +595,7 @@ body {
 .movie-chat {
   width: 20%;
   min-width: min-content;
-  height: 85%;
+  min-height: min-content;
   margin: 0 auto;
   border: 1px solid rgb(228, 227, 227);
   border-radius: 8px;
@@ -605,7 +605,7 @@ body {
 }
 
 .movie-chat-messages {
-  height: 70%;
+  height: 55%;
   padding-left: 10px;
   max-width: 100%;
   border: 1px solid rgb(228, 227, 227);
@@ -613,6 +613,15 @@ body {
   box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
   background-color: #f5f5f5;
   margin: 20px;
+}
+
+.send-message-btn {
+  margin-left: 20px;
+}
+
+.chat-text-input {
+  margin-left: 20px;
+  width: 88%;
 }
 
 /*Homepage(index)*/
@@ -696,6 +705,7 @@ footer {
   text-decoration: none;
   color: black;
 }
+
 .nav-links,
 a {
   color: #eacc38;
@@ -703,11 +713,20 @@ a {
   font-size: 20px;
 }
 
+.nav-links,
+a:hover {
+  color: white;
+}
+
 .nav-user-info {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: white;
+}
+
+.nav-user-info h4 {
+  margin-right: 10px;
 }
 
 .movie-page-title {

@@ -500,7 +500,8 @@ body {
 /* Movie details */
 
 #movie-details-left-wing {
-  width: 60%;
+  width: 45%;
+  min-width: min-content;
   margin: 0 auto;
   border: 1px solid rgb(228, 227, 227);
   border-radius: 8px;
@@ -514,7 +515,6 @@ body {
 }
 
 #movie-details-right-wing {
-  width: 20%;
   min-width: fit-content;
   margin: 0 auto;
   border: 1px solid rgb(228, 227, 227);
@@ -592,15 +592,27 @@ body {
   color: white;
 }
 
-.movie-chat-messages {
-  width: 400px;
-  height: 200px;
+.movie-chat {
+  width: 20%;
+  min-width: min-content;
+  height: 85%;
   margin: 0 auto;
   border: 1px solid rgb(228, 227, 227);
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
   background-color: white;
   margin-top: 30px;
+}
+
+.movie-chat-messages {
+  height: 70%;
+  padding-left: 10px;
+  max-width: 100%;
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(238, 238, 238, 0.2);
+  background-color: #f5f5f5;
+  margin: 20px;
 }
 
 /*Homepage(index)*/

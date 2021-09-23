@@ -12,7 +12,13 @@ module.exports = {
         socket.join(movieId);
       });
       socket.on("chat", ({ movieId, chatText, username }) => {
-        io.to(movieId).emit("recievedChat", { chatText, username });
+        Chat.create({ movieId, chatText, username })
+          .then(() => {
+            io.to(movieId).emit("recievedChat", { chatText, username });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     });
   },

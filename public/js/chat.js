@@ -21,8 +21,8 @@ document.addEventListener(
         newMessageElement.appendChild(newContent);
 
         // add the newly created element and its content into the DOM
-        const movieChatMessages = document.getElementById(
-          "movie-chat-messages"
+        const movieChatMessages = document.querySelector(
+          ".movie-chat-messages"
         );
         movieChatMessages.appendChild(newMessageElement);
       });

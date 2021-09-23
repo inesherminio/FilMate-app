@@ -1,15 +1,13 @@
 const { Schema, model } = require("mongoose");
 
 const chatSchema = new Schema({
-  room: {
-    type: Schema.Types.ObjectId,
-    ref: "Movie",
+  movieId: {
+    type: String,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  username: {
+    type: String,
   },
-  messages: {
+  chatText: {
     type: String,
   },
   created: {

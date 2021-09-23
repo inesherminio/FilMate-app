@@ -14,6 +14,7 @@ module.exports = {
       socket.on("chat", ({ movieId, chatText, username }) => {
         Chat.create({ movieId, chatText, username })
           .then(() => {
+            console.log(chatText);
             io.to(movieId).emit("recievedChat", { chatText, username });
           })
           .catch((err) => {

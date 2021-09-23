@@ -31,17 +31,17 @@
   </div>
 </div>
 
-<div id="movie-chat" data-movie-id="{{movieFromApi.id}}">
-  
-  <div class="movie-chat-messages"></div>
-
+<div class="movie-chat" data-movie-id="{{movieFromApi.id}}">
+        <h3 class="movie-titles">Chat about this movie</h3>
+  <div class="movie-chat-messages">
+  </div>
   <form action="#" id="message-form">
-    <input type="textarea" name="chatText" id="">
+    <div class="mb-3">
+    <input class="form-control chat-text-input" type="textarea" name="chatText" id="">
     <input type="hidden" name="username" value="{{user.username}}">
-    <button type="submit">Send</button>
+    </div>
+    <button class="btn add-btn send-message-btn" type="submit">Send</button>
   </form>
-
-
 </div>
 
 <div id="movie-details-right-wing">

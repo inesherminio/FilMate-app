@@ -4,17 +4,17 @@ FilMate is a social media platform that gives users the opportunity to make deci
 The aim of FilMate is to connect movie lovers and allow them to discuss their passion for film.
 
 ## MVP
-*Authentication and Authorization process allowing users to sign up and view the website.
-*Home view including sign up and log in modals.
-*Profile view showing movies, users interests, users followed and events the user is attending.
-*Random movie view where users make decisions on movies.
-*Movie list view where users can rate movies they have previously made decisions on.
-*Movie details view where users can see further details about each movie, see other users who have liked this movie, follow these users and enter a chat room to interact with these users.
-*Events view where users can create and host an event (through a form showed in a modal), see all future events hosted by themselves or users they follow and choose to attend or unattend those events.
+* Authentication and Authorization process allowing users to sign up and view the website.
+* Home view including sign up and log in modals.
+* Profile view showing movies, users interests, users followed and events the user is attending.
+* Random movie view where users make decisions on movies.
+* Movie list view where users can rate movies they have previously made decisions on.
+* Movie details view where users can see further details about each movie, see other users who have liked this movie, follow these users and enter a chat room to interact with these users.
+* Events view where users can create and host an event (through a form showed in a modal), see all future events hosted by themselves or users they follow and choose to attend or unattend those events.
 
 ## Backlog
-*Events view allowing users to host and join events/viewing parties.
-*Chatroom to allow users to chat about certain movies.
+* Events view allowing users to host and join events/viewing parties.
+* Chatroom to allow users to chat about certain movies.
 
 ## Data Structure
 ### App.js and Routes
@@ -37,10 +37,10 @@ There are many get and post routes in this file. The initial get route renders t
 6.events.routes.js
 The main route in this file is the basic get route that renders the events view, with all future events hosted by the loggedInUser or any of it's connections. For that, it is applied a filter on the Movie model, searching all of the user's movies, a filter on the User model, in order to get the array of users that the loggedInUser follows, and a filter on the Event model, filtering only events hosted by the user and a user on its following array, as well as events occuring later than the present date, all sorted by date. There is also 3 aditional post routes, one to create/host events, using a form passed on req.body, one to attend events and one to unattend events, both updating the attendees array on the Event model.
 
-###Views
+### Views
 The views for this app were created using handlebars. The initial views folder contains index.hbs, layout.hbs, error.hbs, not-found.hbs and thre folders, events, movies and private.
-####Events
+#### Events
 
-###Models
+### Models
 
-###Other files
+### Other files

@@ -39,6 +39,7 @@ The main route in this file is the basic get route that renders the events view,
 
 ### Views
 The views for this app were created using handlebars. The initial views folder contains index.hbs, layout.hbs, error.hbs, not-found.hbs and thre folders, events, movies and private.
+
 #### Private
   This folder contains one handlebards file, profile.hbs. This file is the view that is rendered for the user profiles. 
 
@@ -49,7 +50,25 @@ The views for this app were created using handlebars. The initial views folder c
   * movie-details.hbs is a view that is rendered directly from the movie-lit.hbs file. It is the view that provides more information on each movie as well as allwoing users to follow other users and chat with them in the chatroom.
 
 #### Events
+  The events folder contains the events-list.hbs file used to render the list of events hosted by users. 
 
 ### Models
+* User.model.js - Schema for user information
+* Moive.model.js - Schema for storing movies from the API (TMDB)
+* Interest.model.js - Schema to store user interests data
+* Connection.model.js - Schema for storing connections made between users 
+* Event.model.js - Schema storing events created by users 
+* Chat.model.js - Schema to store chat history
 
 ### Other files
+
+#### Middlewares 
+* auth.config.js - contains all authentication middleware
+* cloudinary.config.js - contains cloudinary middleware to load images
+* socket.config.js - contains all middleware for live chat 
+
+#### Public
+* Images 
+* Js - contains script.js and chat.js 
+* Stylesheets - style.css
+

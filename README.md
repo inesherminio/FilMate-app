@@ -1,9 +1,9 @@
-#FilMate
-##Description
+# FilMate
+## Description
 FilMate is a social media platform that gives users the opportunity to make decisions (watch or not) on movies, rate these movies and host events or viewing parties. Users are also able to communicate with eachother through live chat and follow other users based on similar interests. This project was created in order to get more familiar with fullstack web development whilst focusing on the back end.
 The aim of FilMate is to connect movie lovers and allow them to discuss their passion for film.
 
-##MVP
+## MVP
 *Authentication and Authorization process allowing users to sign up and view the website.
 *Home view including sign up and log in modals.
 *Profile view showing movies, users interests, users followed and events the user is attending.
@@ -12,12 +12,12 @@ The aim of FilMate is to connect movie lovers and allow them to discuss their pa
 *Movie details view where users can see further details about each movie, see other users who have liked this movie, follow these users and enter a chat room to interact with these users.
 *Events view where users can create and host an event (through a form showed in a modal), see all future events hosted by themselves or users they follow and choose to attend or unattend those events.
 
-##Backlog
+## Backlog
 *Events view allowing users to host and join events/viewing parties.
 *Chatroom to allow users to chat about certain movies.
 
-##Data Structure
-###App.js and Routes
+## Data Structure
+### App.js and Routes
 All of the routes were handled in the app.js file with links to the routes folder for better organization
 1.index.js
 This is a very simple inital route that directs the user to the home page of the app.

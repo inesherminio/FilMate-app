@@ -38,19 +38,19 @@ The initial get route renders the view with the movies the user has made decisio
 The main route in this file is the basic get route that renders the events view, with all future events hosted by the loggedInUser or any of it's connections. For that,  a filter is applied on the Movie model, searching all of the user's movies, a filter on the User model, in order to get the array of users that the loggedInUser follows, and a filter on the Event model, filtering only events hosted by the user and a user on its following array, as well as events occuring later than the present date, all sorted by date. There is also 3 aditional post routes, one to create/host events, using a form passed on req.body, one to attend events and one to unattend events, both updating the attendees array on the Event model.
 
 ### Views
-The views for this app were created using handlebars. The initial views folder contains index.hbs, layout.hbs, error.hbs, not-found.hbs and thre folders, events, movies and private.
+The views for this app were created using handlebars. The initial views folder contains _index.hbs_, layout.hbs, error.hbs, not-found.hbs and thre folders, events, movies and private.
 
 #### Private
-  This folder contains one handlebards file, _profile.hbs. This file is the view that is rendered for the user profiles. 
+  This folder contains one handlebards file, _profile.hbs_. This file is the view that is rendered for the user profiles. 
 
 #### Movies
   The movies folder contains random-movies.hbs, movie-list.hbs and movie-details.hbs. 
-  * _random-movie.hbs is the view that is rendered when users are making decision on movies 
-  * _movie-list.hbs is the view that is rendererd when users want to see all the movies they have made decisions on. They are also able to rate movies in this view.
-  * _movie-details.hbs is a view that is rendered directly from the movie-lit.hbs file. It is the view that provides more information on each movie as well as allwoing users to follow other users and chat with them in the chatroom.
+  * _random-movie.hbs_ is the view that is rendered when users are making decision on movies 
+  * _movie-list.hbs_ is the view that is rendererd when users want to see all the movies they have made decisions on. They are also able to rate movies in this view.
+  * _movie-details.hbs_ is a view that is rendered directly from the movie-lit.hbs file. It is the view that provides more information on each movie as well as allwoing users to follow other users and chat with them in the chatroom.
 
 #### Events
-  The events folder contains the _events-list.hbs file used to render the list of events hosted by users. 
+  The events folder contains the _events-list.hbs_ file used to render the list of events hosted by users. 
 
 ### Models
 * User.model.js - Schema for user information

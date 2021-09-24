@@ -19,7 +19,7 @@ The aim of FilMate is to connect movie lovers and allow them to discuss their pa
 ## Data Structure
 ### App.js and Routes
 All of the routes were handled in the app.js file with links to the routes folder for better organization
-1.index.js
+#### 1. index.js
 This is a very simple inital route that directs the user to the home page of the app.
 
 2.auth.routes.js

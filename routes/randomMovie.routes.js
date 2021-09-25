@@ -12,7 +12,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
   let movieData;
   axios
     .get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
     )
     .then((movieFromApi) => {
       //console.log(movieFromApi.data.results[index]);

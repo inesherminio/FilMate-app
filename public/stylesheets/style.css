@@ -592,7 +592,7 @@ body {
   color: white;
 }
 
-.movie-chat {
+#movie-chat {
   width: 20%;
   min-width: min-content;
   min-height: min-content;

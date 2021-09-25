@@ -72,3 +72,7 @@ The views for this app were created using handlebars. The initial views folder c
 * Js - contains script.js and chat.js 
 * Stylesheets - style.css
 
+### Links 
+* https://trello.com/b/LNPhLayu/filmate
+* https://docs.google.com/presentation/d/1kmGy47blzlRrIrDVe5I7m6XwseSKcLbLwrZF3qS_4RQ/edit?usp=sharing
+

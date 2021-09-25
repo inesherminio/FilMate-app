@@ -35,7 +35,10 @@ router.get("/", isLoggedIn, (req, res, next) => {
       connections = connectionsFromDb;
       return Event.find(
         {
-          attendees: { $in: user._id },
+          $and: [
+            { attendees: { $in: user._id } },
+            { date: { $gt: Date.now() } },
+          ],
         },
         {},
         { limit: 2, sort: "date" }

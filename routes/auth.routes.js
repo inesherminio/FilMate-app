@@ -101,9 +101,11 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/logout", (req, res, next) => {
+  req.app.locals.loggedInUser = null;
   req.app.locals.isLoggedIn = false;
-  req.session.destroy();
-  res.redirect("/");
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;

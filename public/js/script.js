@@ -2,18 +2,14 @@ document.addEventListener(
   "DOMContentLoaded",
   () => {
     console.log("FilMate JS imported successfully!");
+    let signUpModal = new bootstrap.Modal(
+      document.getElementById("signUpModal"),
+      {}
+    );
+    signUpModal.show();
   },
   false
 );
-
-//Attempt to clear the submit input for the chat
-
-/*function submitForm() {
-  let form = document.querySelector("#message-form");
-  form.submit();
-  form.reset();
-  return false;
-}*/
 
 let chatInput = document.querySelector(".chat-text-input");
 let chatButton = document.querySelector(".send-message-btn");

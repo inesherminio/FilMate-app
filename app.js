@@ -37,9 +37,7 @@ const capitalized = (string) =>
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
-  if (req.session.loggedInUser) {
-    req.app.locals.isLoggedIn = true;
-  }
+  app.locals.loggedInUser = req.session.loggedInUser;
   next();
 });
 

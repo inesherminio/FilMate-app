@@ -52,16 +52,6 @@ module.exports = (app) => {
     })
   );
 
-  app.use("/", (req, res, next) => {
-    let cookie = getcookie(req);
-    console.log(cookie);
-  });
-
-  function getcookie(req) {
-    let cookie = req.header.cookie;
-    return cookie;
-  }
-
   // Handles access to the favicon
   app.use(
     favicon(path.join(__dirname, "..", "public", "images", "faviconMovie.png"))
